@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TabBar } from "react-native-animated-nav-tab-bar"
+import { TabBar } from 'react-native-animated-nav-tab-bar'
 import Icon from 'react-native-vector-icons/Feather'
 import Home from './home'
 import Profile from './profile'
@@ -14,10 +14,10 @@ export default createAppContainer(
             Profie: Profile,
         }, {
         tabBarIcon:
-            { focused: true, horizontal: true, tintColor: "hello" },
+            { focused: true, horizontal: true, tintColor: 'hello' },
         tabBarOptions: {
-            activeTintColor: "#2B7C85",
-            inactiveTintColor: "#222222",
+            activeTintColor: '#2B7C85',
+            inactiveTintColor: '#222222',
         },
 
         tabBarComponent: props =>
@@ -32,20 +32,20 @@ export default createAppContainer(
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
-                color={"#e6b580"}
+                color={'#e6b580'}
                 focused={focused}
                 tintColor={tintColor}
-                name="home"
+                name='home'
             />,
     },
     Profile.navigationOptions = {
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
-                color={"#8e87d6"}
+                color={'#8e87d6'}
                 focused={focused}
                 tintColor={tintColor}
-                name="user"
+                name='user'
             />,
     }
 )
