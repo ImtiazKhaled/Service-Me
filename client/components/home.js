@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react'
+import { View, Text, ScrollView } from 'react-native'
+import PopularItems from './popularItems'
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+class Home extends Component {
 
   render() {
+    const { categories } = this.props
     return (
-      <View>
-        <Text> Home </Text>
+      <View style={{paddingTop: 100}}>
+        <Text>Popular Items</Text>
+        <PopularItems />
+        <Text style={{paddingTop: 20}}>Previous Services</Text>
+        <PopularItems />
+        <Text style={{paddingTop: 20}}>Favorite Servicers</Text>
+        <PopularItems />
       </View>
-    );
+    )
   }
 }
+
+
+export default Home
