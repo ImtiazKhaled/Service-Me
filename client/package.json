@@ -15,6 +15,7 @@
     "react-native-animated-nav-tab-bar": "^1.0.4",
     "react-native-card-ui": "^1.1.1",
     "react-native-circular-action-menu": "^0.5.0",
+    "react-native-easy-grid": "^0.2.2",
     "react-native-elements": "^1.2.6",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-linear-gradient": "^2.5.6",

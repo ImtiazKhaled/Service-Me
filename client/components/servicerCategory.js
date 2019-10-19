@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { ScrollView, TouchableOpacity, SafeAreaView } from 'react-native'
 import { CardTen } from 'react-native-card-ui'
 import { connect } from 'react-redux'
 
@@ -13,27 +13,29 @@ class ServicerCategory extends Component {
         })
 
         return (
-            <ScrollView style={{ paddingLeft: 10 }}>
-                {
-                    servicer.map(
-                        (service) => {
-                            return <TouchableOpacity
-                                onPress={() => alert('hi', service.name)}
-                                style={{ paddingTop: 80 }}
-                                key={service.id}>
-                                <CardTen
-                                    title={service.name}
-                                    subTitle={service.service}
-                                    image={{ uri: service.profilePicture }}
-                                    price={33.5}
-                                    star={service.rating}
-                                    starsFor={24}
-                                />
-                            </TouchableOpacity>
-                        }
-                    )
-                }
-            </ScrollView>
+            <SafeAreaView>
+                <ScrollView style={{ paddingLeft: 10 }}>
+                    {
+                        servicer.map(
+                            (service) => {
+                                return <TouchableOpacity
+                                    onPress={() => alert('hi', service.name)}
+                                    style={{ paddingTop: 80 }}
+                                    key={service.id}>
+                                    <CardTen
+                                        title={service.name}
+                                        subTitle={service.service}
+                                        image={{ uri: service.profilePicture }}
+                                        price={33.5}
+                                        star={service.rating}
+                                        starsFor={'24'}
+                                    />
+                                </TouchableOpacity>
+                            }
+                        )
+                    }
+                </ScrollView>
+            </SafeAreaView>
         )
     }
 }

@@ -9,7 +9,9 @@ const Navigator = createStackNavigator({
 },
     Home.navigationOptions = {
         header: null,
-
+    },
+    ServicerCategory.navigationOptions = {
+        title: 'Servicers',
     },
 )
 
