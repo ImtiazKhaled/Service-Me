@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Image, SafeAreaView } from 'react-native'
 import PopularItems from './popularItems'
 import FavoriteServicers from './favoriteServicers'
 import HomeTopBar from './homeTopBar'
+import { styles } from '../styles/styles'
 
 class Home extends Component {
 
@@ -14,7 +15,7 @@ class Home extends Component {
     return (
       <SafeAreaView>
         <ScrollView>
-          <View style={{ padding: 10 }} />
+          <View style={styles.topPad} />
           <HomeTopBar />
           <Text>Popular Items</Text>
           <PopularItems navigateToServicer={this.serviceSelected} />
