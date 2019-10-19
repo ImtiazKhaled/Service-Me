@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { TabBar } from 'react-native-animated-nav-tab-bar'
 import Icon from 'react-native-vector-icons/Feather'
-import Home from './home'
 import Profile from './profile'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { createStackNavigator } from 'react-navigation-stack'
+import HomeNav from './homeNavigator'
+import Messages from './messages'
 
 export default createAppContainer(
     createBottomTabNavigator(
         {
-            Home: Home,
+            Home: HomeNav,
+            Messages: Messages,
             Profie: Profile,
         }, {
         tabBarIcon:
@@ -26,9 +27,9 @@ export default createAppContainer(
                 activeTabBackgrounds={['#ede7e6', '#eae3f6', '#eae4f6']} // or 
                 {...props}
             />,
-        },
+    },
     ),
-    Home.navigationOptions = {
+    HomeNav.navigationOptions = {
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
@@ -37,6 +38,16 @@ export default createAppContainer(
                 tintColor={tintColor}
                 name='home'
             />,
+    },
+    Messages.navigationOptions = {
+        tabBarIcon: ({ focused, tintColor }) =>
+            <Icon
+                size={24}
+                color={'#c095c9'}
+                focused={focused}
+                tintColor={tintColor}
+                name='message-square'
+            />
     },
     Profile.navigationOptions = {
         tabBarIcon: ({ focused, tintColor }) =>
@@ -47,5 +58,6 @@ export default createAppContainer(
                 tintColor={tintColor}
                 name='user'
             />,
-    }
+
+    },
 )

@@ -1,47 +1,38 @@
 const initState = {
     categories: [
         {
-            id: '1',
+            id: 'plumber',
             title: 'Plumber',
             used: 1,
         },
         {
-            id: '2',
+            id: 'car-mechanic',
             title: 'Car Mechanic',
             used: 0,
         },
         {
-            id: '3',
+            id: 'ride',
             title: 'Ride',
             used: 2,
         },
     ],
     servicers: [
-        {
-            id: '1',
-            profilePicture: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/46439138_10161004977980585_8159518786643296256_o.jpg?_nc_cat=107&_nc_oc=AQlF_n5tCOTXvF3WY8JiIK4cbPKCCzxa10b6s-BqOn__nfqwxwLgQzds3cZ6ISoMq5A&_nc_ht=scontent-dfw5-1.xx&oh=bf12ac9c0a37bbd9ba17f3c82a636ec2&oe=5E2DE25E',
-            name: 'Bob',
-            service: ' ', 
-        },
-        {
-            id: '2',
-            profilePicture: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/29433206_10155526752320748_1109767262354538496_o.jpg?_nc_cat=104&_nc_oc=AQkWzxaqejJ9fG5TCBAQJYK6XHSUC546eSy9h6DmveDHzByoMNRgpbWIq6vaLLR_jsg&_nc_ht=scontent-dfw5-1.xx&oh=1cfd48b2cf4914999524e5ca6078b72f&oe=5E2BDA6C',
-            name: 'Jane',
-            service: ' ', 
-        },
-        {
-            id: '3',
-            profilePicture: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/36288233_10155754805050748_4127247255428136960_o.jpg?_nc_cat=110&_nc_oc=AQkgnMtdacF5HmWvMoapFb0yMTP4PLcBZFOz6GQhHRrMIuwWbueXP1CSU6PKvJyCPj8&_nc_ht=scontent-dfw5-1.xx&oh=0087542b7c51acb3f5976585dc82a5a1&oe=5E5ED25F',
-            name: 'Jessica',
-            service: ' ', 
-        },
-        {
-            id: '4',
-            profilePicture: 'https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/29389161_10155526752340748_6404315791939862528_o.jpg?_nc_cat=105&_nc_oc=AQkoXNCb5HXcLZjv4sBXvUxr1rzPxQozuf9fXyCedJjylhZ2kQ1llxV5Mz5osmXPRLw&_nc_ht=scontent-dfw5-1.xx&oh=701f2c78da4ab9c98c30739655c3c38f&oe=5E1CA4B4',
-            name: 'Tom',
-            service: ' ', 
-        },
-    ]
+        {"id":"5daa8068fc13ae1596000000","name":"Laurianne Igounet","service":"plumber","rating":1.17,"profilePicture":"http://dummyimage.com/203x138.png/dddddd/000000"},
+        {"id":"5daa8068fc13ae1596000001","name":"Ynes Momery","service":"plumber","rating":4.22,"profilePicture":"http://dummyimage.com/197x171.jpg/dddddd/000000"},
+        {"id":"5daa8068fc13ae1596000002","name":"Kesley Nealand","service":"plumber","rating":4.85,"profilePicture":"http://dummyimage.com/219x185.jpg/cc0000/ffffff"},
+        {"id":"5daa8068fc13ae1596000003","name":"Bonita Brickstock","service":"plumber","rating":0.6,"profilePicture":"http://dummyimage.com/167x104.png/ff4444/ffffff"},
+        {"id":"5daa8068fc13ae1596000004","name":"Bran Kenrick","service":"plumber","rating":0.03,"profilePicture":"http://dummyimage.com/152x242.png/cc0000/ffffff"},
+        {"id":"5daa80a0fc13ae1f58000064","name":"Kristina Bolus","service":"ride","rating":3.9,"profilePicture":"http://dummyimage.com/230x174.bmp/cc0000/ffffff"},
+        {"id":"5daa80a0fc13ae1f58000065","name":"Jonah Moorrud","service":"ride","rating":1.34,"profilePicture":"http://dummyimage.com/165x126.png/cc0000/ffffff"},
+        {"id":"5daa80a0fc13ae1f58000066","name":"Lazaro Rainon","service":"ride","rating":3.23,"profilePicture":"http://dummyimage.com/114x163.bmp/cc0000/ffffff"},
+        {"id":"5daa80a0fc13ae1f58000067","name":"Pansy Wabey","service":"ride","rating":4.25,"profilePicture":"http://dummyimage.com/133x122.png/5fa2dd/ffffff"},
+        {"id":"5daa80a0fc13ae1f58000068","name":"Andriette Pilgrim","service":"ride","rating":1.68,"profilePicture":"http://dummyimage.com/231x224.jpg/cc0000/ffffff"},
+        {"id":"5daa80f7fc13ae1596000005","name":"Juliann Cooper","service":"car-mechanic","rating":1.47,"profilePicture":"http://dummyimage.com/176x226.png/5fa2dd/ffffff"},
+        {"id":"5daa80f7fc13ae1596000006","name":"Lauri Philimore","service":"car-mechanic","rating":0.66,"profilePicture":"http://dummyimage.com/110x128.jpg/5fa2dd/ffffff"},
+        {"id":"5daa80f7fc13ae1596000007","name":"Konstantin Orteu","service":"car-mechanic","rating":3.07,"profilePicture":"http://dummyimage.com/136x130.png/cc0000/ffffff"},
+        {"id":"5daa80f7fc13ae1596000008","name":"Charles Pullen","service":"car-mechanic","rating":2.47,"profilePicture":"http://dummyimage.com/248x120.bmp/5fa2dd/ffffff"},
+        {"id":"5daa80f7fc13ae1596000009","name":"Nappy Offa","service":"car-mechanic","rating":0.68,"profilePicture":"http://dummyimage.com/222x189.png/dddddd/000000"}
+    ]    
 }
 
 export const RootReducer = (state = initState, action) => {
@@ -57,7 +48,6 @@ export const RootReducer = (state = initState, action) => {
             console.log('error adding grade ', action.err)
             return state;
         default:
-        // console.log('that is not a valid type, check code! (rootReducer.js)')
     }
 
     return state;

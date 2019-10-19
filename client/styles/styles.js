@@ -13,7 +13,9 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     itemCards: {
-      width: SW*0.50
+      width: SW*0.40,
+      height: SH*0.15,
+      borderRadius: 30,
     },
     favServicerCardImage: {
       width: SW*0.50,
