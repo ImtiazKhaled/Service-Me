@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 export default class Sevicer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
   render() {
     return (
       <View>
-        <Text> servicer </Text>
+        <Text> Servicer Info </Text>
+        <Button title="close Modal" onPress={() => {
+          console.log('button Clicked')
+          this.props.closeModal()
+        }} />
       </View>
     );
   }

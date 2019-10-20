@@ -1,22 +1,15 @@
 import React from 'react'
-import { Text, View, Image, ImageBackground } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import { connect } from 'react-redux'
-import { SW, SH, styles } from '../styles/styles'
+import { SW, styles } from '../styles/styles'
 import { Card } from 'react-native-elements'
 
 class FavoriteServicers extends React.Component {
-    _renderItem({ item, index }) {
-        return (
-            <Card
-                image={{ uri: item.profilePicture }}
-                imageStyle={styles.favServicerCardImage}
-            >
-                <Text>{item.name}</Text>
-            </Card>
-        )
+    constructor(props) {
+        super(props)
+        this.state = {}
     }
-
     render() {
         const { servicers } = this.props
         return (
@@ -25,7 +18,20 @@ class FavoriteServicers extends React.Component {
                 layoutCardOffset={18}
                 ref={(c) => { this._carousel = c }}
                 data={servicers}
-                renderItem={this._renderItem}
+                loop={true}
+                renderItem={({ item, index }) => {
+                    return <TouchableOpacity
+                        onPress={() => {
+                            this.props.servicerSelected(item)
+                        }}>
+                        <Card
+                            image={{ uri: item.profilePicture }}
+                            imageStyle={styles.favServicerCardImage}
+                        >
+                            <Text>{item.name}</Text>
+                        </Card>
+                    </TouchableOpacity>
+                }}
                 sliderWidth={SW}
                 itemWidth={SW * 0.70}
             />
