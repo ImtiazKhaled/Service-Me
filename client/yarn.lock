@@ -4420,12 +4420,27 @@ react-native-branch@~3.0.1:
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
   integrity sha512-vbcYxPZlpF5f39GAEUF8kuGQqCNeD3E6zEdvtOq8oCGZunHXlWlKgAS6dgBKCvsHvXgHuMtpvs39VgOp8DaKig==
 
+react-native-card-ui@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-card-ui/-/react-native-card-ui-1.1.1.tgz#23e517d86949fcc861040cbf725affe8ad52e11a"
+  integrity sha512-pF5FHtK9AtHnjtranotzmDjs7PItSQ2lFZLoqiTidc9LYrKMiP7RjwqZ9XvlXFIOCFE9g7uryv1aDCECfmC5Sg==
+  dependencies:
+    react-native-size-matters "^0.1.0"
+    react-native-vector-icons "^6.3.0"
+
 react-native-circular-action-menu@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-circular-action-menu/-/react-native-circular-action-menu-0.5.0.tgz#90a65eda71cbb9ec7cbcda58fa347bff06faa71b"
   integrity sha512-s9jZj0PQd0sXkP9wWGtAVREINyubsOfPpUzJHqYtNweuEIc6f7XCvb9913rHbxemhCT1EdjBCzeL53KAGbXWQA==
   dependencies:
     prop-types "^15.6.1"
+
+react-native-easy-grid@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-easy-grid/-/react-native-easy-grid-0.2.2.tgz#f0be33620be1ebe2d2295918eb58b0a27e8272ab"
+  integrity sha512-MlYrNIldnEMKn6TVatQN1P64GoVlwGIuz+8ncdfJ0Wq/xtzUkQwlil8Uksyp7MhKfENE09MQnGNcba6Mx3oSAA==
+  dependencies:
+    lodash "^4.17.15"
 
 react-native-elements@^1.2.6:
   version "1.2.6"
@@ -4450,6 +4465,11 @@ react-native-gesture-handler@^1.4.1:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-linear-gradient@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
+  integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
 react-native-ratings@^6.3.0:
   version "6.5.0"
@@ -4478,6 +4498,16 @@ react-native-safe-area-view@^0.14.1, react-native-safe-area-view@^0.14.6:
   dependencies:
     debounce "^1.2.0"
 
+react-native-size-matters@^0.1.0:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.1.7.tgz#071a88762af77649abbb81dd6c9fea76b2ba794a"
+  integrity sha512-LxU2UnQKt69EddSjmcWIqL5GD8RFuwyHGstXqBym+8IIqEWDRVIuZpySVOW11hrQXFj8YF3EGL86fGFqPT+9qA==
+
+react-native-size-matters@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.2.1.tgz#036a139eb4257682a412cf33bb2089726fe636f3"
+  integrity sha512-u3XlYOt15SRjZtFdwiVIejp/X+gHj/uL6DcStNh4R8/7wGr2WkzpaG4C9YYPuZTJ0SwBJOCI4E1yCdQAOIi6fA==
+
 react-native-snap-carousel@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-3.8.2.tgz#681443b3f03bd146bbc3012e2d21298336569bdb"
@@ -4496,7 +4526,7 @@ react-native-tab-view@^2.9.0:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.10.0.tgz#5e249e5650502010013449ffd4e5edc18a95364b"
   integrity sha512-qgexVz5eO4yaFjdkmn/sURXgVvaBo6pZD/q1eoca96SbPVbaH3WzVhF3bRUfeTHwZkXwznFTpS3JURqIFU8vQA==
 
-react-native-vector-icons@^6.6.0:
+react-native-vector-icons@^6.3.0, react-native-vector-icons@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"
   integrity sha512-MImKVx8JEvVVBnaShMr7/yTX4Y062JZMupht1T+IEgbqBj4aQeQ1z2SH4VHWKNtWtppk4kz9gYyUiMWqx6tNSw==

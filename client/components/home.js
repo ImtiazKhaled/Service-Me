@@ -1,20 +1,30 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Image, SafeAreaView } from 'react-native'
 import PopularItems from './popularItems'
+import FavoriteServicers from './favoriteServicers'
+import HomeTopBar from './homeTopBar'
 
 class Home extends Component {
 
+  serviceSelected = type => {
+    this.props.navigation.navigate('Service', type)
+  }
+
   render() {
-    const { categories } = this.props
     return (
-      <View style={{paddingTop: 100}}>
-        <Text>Popular Items</Text>
-        <PopularItems />
-        <Text style={{paddingTop: 20}}>Previous Services</Text>
-        <PopularItems />
-        <Text style={{paddingTop: 20}}>Favorite Servicers</Text>
-        <PopularItems />
-      </View>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={{ padding: 10 }} />
+          <HomeTopBar />
+          <Text>Popular Items</Text>
+          <PopularItems navigateToServicer={this.serviceSelected} />
+          <Text style={{ paddingTop: 20 }}>Previous Services</Text>
+          <PopularItems navigateToServicer={this.serviceSelected} />
+          <Text style={{ paddingTop: 20 }}>Favorite Servicers</Text>
+          <FavoriteServicers />
+          <View style={{ padding: 30 }} />
+        </ScrollView>
+      </SafeAreaView>
     )
   }
 }

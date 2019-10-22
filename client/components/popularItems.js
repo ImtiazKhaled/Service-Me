@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { Text, ScrollView, TouchableOpacity } from 'react-native'
 import { Card } from 'react-native-elements'
 import { styles } from '../styles/styles'
 import { connect } from 'react-redux'
 
 class PopularItems extends Component {
+
+    navigateToServicer = type => {
+        this.props.navigateToServicer(type)
+    }
 
     render() {
         const { categories } = this.props
@@ -14,11 +18,14 @@ class PopularItems extends Component {
                 showsHorizontalScrollIndicator={false}
             >
                 {categories.map((type) =>
-                    <Card key={type.title} containerStyle={styles.itemCards}>
-                        <Text>
-                            {type.title}
-                        </Text>
-                    </Card>
+                    <TouchableOpacity key={type.title} onPress={() => this.navigateToServicer(type)}>
+                        <Card
+                            containerStyle={styles.itemCards}>
+                            <Text>
+                                {type.title}
+                            </Text>
+                        </Card>
+                    </TouchableOpacity>
                 )}
 
             </ScrollView>
