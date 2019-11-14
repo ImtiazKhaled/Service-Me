@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react'
+import { View, SafeAreaView } from 'react-native'
+import Message from './message'
+import { styles } from '../styles/styles'
 
 export default class Messages extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
+  
   render() {
     return (
-      <View>
-        <Text> messages </Text>
-      </View>
-    );
+      <SafeAreaView>
+        <View style={styles.topPad}>
+          <Message />
+        </View>
+      </SafeAreaView>
+    )
   }
 }

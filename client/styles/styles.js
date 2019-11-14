@@ -31,5 +31,8 @@ export const styles = StyleSheet.create({
   center: {
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  topPad: {
+    padding: 15,
+  },
 })
