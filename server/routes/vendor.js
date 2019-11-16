@@ -5,7 +5,7 @@ const connection = config.connection
 // get vendor by id
 router.get('/:id', (req, res) => {
     var id = req.params.id
-    const GET_VENDOR = `SELECT * FROM SMUSER NATURAL JOIN VENDOR  WHERE UserId='${id}'`
+    const GET_VENDOR = `SELECT * FROM SMUSER NATURAL JOIN VENDOR WHERE UserId='${id}'`
     console.log(GET_VENDOR)
     connection.query(GET_VENDOR, (err, data) => {
         if(data) {
