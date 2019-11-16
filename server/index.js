@@ -1,12 +1,19 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
-var mysql = require('mysql')
+const mysql = require('mysql')
+const cors =  require('cors')
+const port = 4500
 
+// middleware
 app.use(bodyParser.json())
 
+// route declaration
+const vendorsRoutes = require('./routes/vendors')
 const vendorRoutes = require('./routes/vendor')
+app.use('/vendors', vendorsRoutes)
 app.use('/vendor', vendorRoutes)
 
-app.listen(4000, () => {
-    console.log('serviceme server listening on port 4000')
+
+app.listen(port, () => {
+    console.log('serviceme server listening on port', port)
 })

@@ -7,7 +7,7 @@ CREATE TABLE SMUSER(
 	FName VARCHAR(50) NOT NULL,
 	LName VARCHAR(50) NOT NULL,
     CreatedAt DATE NOT NULL,
-	ProfilePicture VARCHAR(50) NOT NULL,
+	ProfilePicture VARCHAR(255)
 );
 
 CREATE TABLE VENDOR(
@@ -16,3 +16,13 @@ CREATE TABLE VENDOR(
 	Rating VARCHAR(50) NOT NULL,
 	FOREIGN KEY(UserId) REFERENCES SMUSER(UserId)
 );
+
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/users'
+INTO TABLE SMUSER
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/vendors'
+INTO TABLE VENDOR
+FIELDS TERMINATED BY ','
+IGNORE 1 ROWS;

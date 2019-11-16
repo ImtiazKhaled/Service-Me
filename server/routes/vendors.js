@@ -1,11 +1,18 @@
 const router = require('express').Router()
+const config = require('../connection')
+const connection = config.connection
 
-router.get('/', (res, req) => {
-    res.send('listening on server');
-})
-
-router.post('/', (res, req) => {
-    res.send(req.body)
+// get all vendors
+router.get('/', (req, res) => {
+    const GET_ALL_VENDORS = 'SELECT * FROM VENDOR'
+    console.log(GET_ALL_VENDORS)
+    connection.query(GET_ALL_VENDORS, (err, data) => {
+        if(data) {
+            res.send(data)
+        } else {
+            console.log(err)
+        }
+    })
 })
 
 module.exports = router
