@@ -21,7 +21,7 @@ class Chat extends Component {
             >
                   {
                         chat.map((msg) => 
-                            <Card key={msg.MessageId} title={msg.Message}>
+                            <Card key={msg.MessageId} title={msg.MessageText}>
                                 <Text>
                                     {msg.Sender}
                                 </Text>

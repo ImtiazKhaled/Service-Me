@@ -13,7 +13,6 @@ export default class Message extends Component {
             onPress={() => this.openMessage(this.props)} >
             <CardThree
                 title={message.FName}
-                subTitle={message.Title}
                 profile={{ uri: message.ProfilePicture }}
             />
         </TouchableOpacity>

@@ -5,20 +5,15 @@ const cors =  require('cors')
 const port = 3001
 
 // middleware
-// app.use((req, res, next) => {
-// 	res.header("Access-Control-Allow-Origin", "*");
-// 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-// 	res.header("Access-Control-Allow-Methods","GET, POST, DELETE, PATCH");
-// 	next();
-// })
-
 app.use(bodyParser.json())
 
 // route declaration
 const vendorsRoutes = require('./routes/vendors')
 const vendorRoutes = require('./routes/vendor')
+const messagesRoutes = require('./routes/messages')
 app.use('/vendors', vendorsRoutes)
 app.use('/vendor', vendorRoutes)
+app.use('/messages', messagesRoutes)
 
 
 app.listen(port, () => {

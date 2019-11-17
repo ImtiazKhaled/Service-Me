@@ -15,4 +15,18 @@ router.get('/', (req, res) => {
     })
 })
 
+// get searched vendors by first or last name
+router.get('/:name', (req, res) => {
+    var name = req.params.name
+    const GET_SEARCHED_VENDORS = `SELECT * FROM VENDOR NATURAL JOIN SMUSER WHERE FName='${name}' OR LName='${name}`
+    console.log(GET_SEARCHED_VENDORS)
+    connection.query(GET_SEARCHED_VENDORS, (err, data) => {
+        if(data) {
+            res.send(data)
+        } else {
+            console.log(err)
+        }
+    })
+})
+
 module.exports = router
