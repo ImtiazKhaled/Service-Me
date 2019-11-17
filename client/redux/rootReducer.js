@@ -15,7 +15,7 @@ var initState = {
             id: 'Home Tutoring',
         },
         {
-            id: 'Packaging/Moving',
+            id: 'Packaging Moving',
         },
         {
             id: 'Painting',

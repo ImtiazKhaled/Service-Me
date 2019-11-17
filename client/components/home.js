@@ -49,7 +49,7 @@ class Home extends Component {
           <HomeTopBar />
           <Text>Catergories</Text>
           <PopularItems navigateToServicer={this.serviceSelected} />
-          <Text style={{ paddingTop: 20 }}>Favorite Servicers</Text>
+          <Text style={{ paddingTop: 20 }}>Servicers</Text>
           <FavoriteServicers 
             servicers={this.state.servicers} 
             servicerSelected={(item, evt) => this.showModal(item, evt)}/>

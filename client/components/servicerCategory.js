@@ -42,8 +42,8 @@ class ServicerCategory extends Component {
                                         title={servicer.FName + ' ' + servicer.LName}
                                         subTitle={servicer.ServiceOffered}
                                         image={{ uri: servicer.ProfilePicture }}
-                                        price={33.5}
-                                        star={servicer.Rating}
+                                        price={parseFloat(servicer.Rate)}
+                                        star={parseInt(servicer.Rating)}
                                         starsFor={'0'}
                                     />
                                 </TouchableOpacity>

@@ -1,16 +1,38 @@
 import React, { Component } from 'react'
 import { View, SafeAreaView } from 'react-native'
-import Message from './message'
 import { connect } from 'react-redux'
 import { styles } from '../styles/styles'
+import { url } from '../url' 
+import Message from './message'
 
 class Messages extends Component {
-  openMessage = (Messagee) => {
-    this.props.navigation.navigate('Chat', Messagee)
+  constructor(props) {
+    super(props)
+    this.state = {
+      messagers:[],
+    }
   }
+  
+  componentWillMount = () => {
+    fetch(url+'messages/'+this.props.UserId)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        messagers: data,
+      })
+    })
+    .catch(err => alert(err))
+  }
+
+  openMessage = (Messagee) => {
+    const ChatIds = {
+      Messagee: Messagee.message.Messagee, Messager: Messagee.message.Messager
+    }
+    this.props.navigation.navigate('Chat', ChatIds)
+  }
+
   render() {
-    const {messagers} = this.props
-    console.log(messagers)
+    const { messagers } = this.state
     return (
       <SafeAreaView>
         <View style={styles.topPad}>
@@ -33,7 +55,7 @@ class Messages extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      messagers: state.user.messagers
+      UserId: state.user.UserId
   }
 }
 
