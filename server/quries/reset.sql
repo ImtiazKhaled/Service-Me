@@ -17,12 +17,12 @@ CREATE TABLE VENDOR(
 	FOREIGN KEY(UserId) REFERENCES SMUSER(UserId)
 );
 
-LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/vendors'
-INTO TABLE VENDOR
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled07/Service-Me/server/dataset/users'
+INTO TABLE SMUSER
 FIELDS TERMINATED BY ','
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/users'
-INTO TABLE SMUSER
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled07/Service-Me/server/dataset/vendors'
+INTO TABLE VENDOR
 FIELDS TERMINATED BY ','
 IGNORE 1 ROWS;

@@ -2,7 +2,7 @@ const app = require('express')()
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const cors =  require('cors')
-const port = 4500
+const port = 3001
 
 // middleware
 // app.use((req, res, next) => {
