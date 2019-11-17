@@ -1,7 +1,7 @@
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
-import Home from './home'
-import ServicerCategory from './servicerCategory'
+import Home from '../components/home'
+import ServicerCategory from '../components/servicerCategory'
 
 const Navigator = createStackNavigator({
     Home: { screen: Home },

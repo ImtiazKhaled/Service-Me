@@ -17,7 +17,48 @@ const initState = {
             used: 2,
         },
     ],
-    servicers: []
+    servicers: [],
+    user: {
+        messagers: [
+        {
+            UserId: 'mark',
+            FName: 'mark',
+            LName: 'solnav',
+            Title: 'car mechanic',
+            ProfilePicture: 'http://www.minneapolisheadshots.com/gallery/main/audiologist-headshot.jpg',
+        },
+        {
+            UserId: 'laury',
+            FName: 'laury',
+            LName: 'ding',
+            Title: 'cleaner',
+            ProfilePicture: 'https://jwhitephoto.com/wp-content/uploads/2017/11/metro-detroit-birmingham-headshot-photographer-jeff-white-jwhitephoto-18-678x1024.jpg',
+        }
+        ],
+        chat: [
+            {
+                MessageId: 'markimtiaz1',
+                Sender: 'imtiazi',
+                Receiver: 'mark',
+                Message: 'Hello there!',
+                SendAt: '1573966460561'     
+            },
+            {
+                MessageId: 'markimtiaz1',
+                Receiver: 'imtiazi',
+                Sender: 'mark',
+                Message: 'Hello there!',
+                SendAt: '1573966490562'     
+            },
+            {
+                MessageId: 'markimtiaz1',
+                Sender: 'imtiazi',
+                Receiver: 'mark',
+                Message: 'Hello there!',
+                SendAt: '1573966490562'     
+            },
+        ]
+    }
 }
 
 const RootReducer = (state = initState, action) => {

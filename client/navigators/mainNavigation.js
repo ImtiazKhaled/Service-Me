@@ -1,17 +1,17 @@
 import React from 'react'
 import { TabBar } from 'react-native-animated-nav-tab-bar'
 import Icon from 'react-native-vector-icons/Feather'
-import Profile from './profile'
+import Profile from '../components/profile'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import HomeNav from './homeNavigator'
-import Messages from './messages'
+import MessagesNav from './messageNavigator'
 
 export default createAppContainer(
     createBottomTabNavigator(
         {
             Home: HomeNav,
-            Messages: Messages,
+            Messages: MessagesNav,
             Profie: Profile,
         }, {
         tabBarIcon:
@@ -39,7 +39,7 @@ export default createAppContainer(
                 name='home'
             />,
     },
-    Messages.navigationOptions = {
+    MessagesNav.navigationOptions = {
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
