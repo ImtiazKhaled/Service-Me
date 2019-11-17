@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
   },
   favServicerCardImage: {
-    width: SW * 0.50,
-    height: SH * 0.40,
+    width: SW * 0.55,
+    height: SH * 0.50,
   },
   searchBarContainer: {
     backgroundColor: Theme.backgroundColor,

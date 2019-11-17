@@ -3,19 +3,34 @@ const url = 'http://34.68.138.86:3001/'
 var initState = {
     categories: [
         {
-            id: 'plumber',
-            title: 'Plumber',
-            used: 1,
+            id: 'Appliances',
         },
         {
-            id: 'car-mechanic',
-            title: 'Car Mechanic',
-            used: 0,
+            id: 'Electrical',
         },
         {
-            id: 'ride',
-            title: 'Ride',
-            used: 2,
+            id: 'Plumbing',
+        },
+        {
+            id: 'Home Tutoring',
+        },
+        {
+            id: 'Packaging/Moving',
+        },
+        {
+            id: 'Painting',
+        },
+        {
+            id: 'Cleaning',
+        },
+        {
+            id: 'Computer Repair',
+        },
+        {
+            id: 'Home Repair',
+        },
+        {
+            id: 'Pest Control',
         },
     ],
     servicers: [],

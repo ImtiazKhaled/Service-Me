@@ -29,7 +29,6 @@ class Home extends Component {
       })
     })
     .catch(err => alert(err))
-    this.props.getVendors()
   }
 
   serviceSelected = type => {
@@ -48,9 +47,7 @@ class Home extends Component {
         <ScrollView>
           <View style={styles.topPad} />
           <HomeTopBar />
-          <Text>Popular Items</Text>
-          <PopularItems navigateToServicer={this.serviceSelected} />
-          <Text style={{ paddingTop: 20 }}>Previous Services</Text>
+          <Text>Catergories</Text>
           <PopularItems navigateToServicer={this.serviceSelected} />
           <Text style={{ paddingTop: 20 }}>Favorite Servicers</Text>
           <FavoriteServicers 

@@ -2,33 +2,49 @@ import React, { Component } from 'react'
 import { ScrollView, TouchableOpacity, SafeAreaView } from 'react-native'
 import { CardTen } from 'react-native-card-ui'
 import { connect } from 'react-redux'
+import { url } from '../url'
 
 class ServicerCategory extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          servicers:[]
+        }
+    }
 
-    render() {
+    componentDidMount = () => {
         let id = JSON.stringify(this.props.navigation.getParam('id'))
         id = id.substring(1, id.length - 1)
-        const servicer = this.props.servicers.filter((service) => {
-            return service.service === id
+        console.log(id)
+        fetch(url+'vendors/'+id)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            servicers: data,
+          })
         })
+        .catch(err => alert(err))
+    }
 
+    render() {
+        const {servicers} = this.state
         return (
             <SafeAreaView>
                 <ScrollView style={{ paddingLeft: 10 }}>
                     {
-                        servicer.map(
-                            (service) => {
+                        servicers.map(
+                            (servicer) => {
                                 return <TouchableOpacity
-                                    onPress={() => alert('hi', service.name)}
+                                    onPress={() => alert('hi', servicer.name)}
                                     style={{ paddingTop: 80 }}
-                                    key={service.id}>
+                                    key={servicer.UserId}>
                                     <CardTen
-                                        title={service.name}
-                                        subTitle={service.service}
-                                        image={{ uri: service.profilePicture }}
+                                        title={servicer.FName + ' ' + servicer.LName}
+                                        subTitle={servicer.ServiceOffered}
+                                        image={{ uri: servicer.ProfilePicture }}
                                         price={33.5}
-                                        star={service.rating}
-                                        starsFor={'24'}
+                                        star={servicer.Rating}
+                                        starsFor={'0'}
                                     />
                                 </TouchableOpacity>
                             }
@@ -41,7 +57,6 @@ class ServicerCategory extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         servicers: state.servicers
     }

@@ -18,11 +18,11 @@ class PopularItems extends Component {
                 showsHorizontalScrollIndicator={false}
             >
                 {categories.map((type) =>
-                    <TouchableOpacity key={type.title} onPress={() => this.navigateToServicer(type)}>
+                    <TouchableOpacity key={type.id} onPress={() => this.navigateToServicer(type)}>
                         <Card
                             containerStyle={styles.itemCards}>
                             <Text>
-                                {type.title}
+                                {type.id}
                             </Text>
                         </Card>
                     </TouchableOpacity>
