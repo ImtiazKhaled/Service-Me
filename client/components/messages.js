@@ -6,11 +6,11 @@ import { styles } from '../styles/styles'
 
 class Messages extends Component {
   openMessage = (Messagee) => {
-
     this.props.navigation.navigate('Chat', Messagee)
   }
   render() {
     const {messagers} = this.props
+    console.log(messagers)
     return (
       <SafeAreaView>
         <View style={styles.topPad}>

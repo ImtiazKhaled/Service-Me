@@ -12,7 +12,8 @@ export default class Message extends Component {
          <TouchableOpacity
             onPress={() => this.openMessage(this.props)} >
             <CardThree
-                title={message.FName}
+                title={message.FName + " " + message.LName}
+                subTitle=''
                 profile={{ uri: message.ProfilePicture }}
             />
         </TouchableOpacity>

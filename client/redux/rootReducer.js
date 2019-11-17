@@ -1,5 +1,6 @@
 const url = 'http://34.68.138.86:3001/'
-const initState = {
+
+var initState = {
     categories: [
         {
             id: 'plumber',
@@ -19,20 +20,8 @@ const initState = {
     ],
     servicers: [],
     user: {
-        messagers: [
-        {
-            UserId: 'mark',
-            FName: 'mark',
-            LName: 'solnav',
-            ProfilePicture: 'http://www.minneapolisheadshots.com/gallery/main/audiologist-headshot.jpg',
-        },
-        {
-            UserId: 'laury',
-            FName: 'laury',
-            LName: 'ding',
-            ProfilePicture: 'https://jwhitephoto.com/wp-content/uploads/2017/11/metro-detroit-birmingham-headshot-photographer-jeff-white-jwhitephoto-18-678x1024.jpg',
-        }
-        ],
+        UserId: 'AC111400',
+        messagers: [],
         chat: [
             {
                 MessageId: 'markimtiaz1',
@@ -61,31 +50,45 @@ const initState = {
 
 const RootReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'ADD_SUBJECT':
-            return state;
-        case 'ADD_SUBJECT_ERROR':
-            console.log('error adding subject ', action.err)
-            return state;
-        case 'ADD_GRADE':
-            return state;
-        case 'ADD_GRADE_ERROR':
-            console.log('error adding grade ', action.err)
-            return state;
+        case 'GET_VENDORS':
+            fetch(url+'vendors')
+            .then(response => response.json())
+            .then(data => {
+                state = {
+                    ...state,
+                    servicers: data
+                }
+                // console.log(state)
+                return state
+            })
+            .catch(err => alert(err)) 
         default:
+            // fetch(url+'vendors')
+            // .then(response => response.json())
+            // .then(data => {
+            //     state = {
+            //         servicers: data,
+            //         ...state
+            //     }
+            //     return state
+            // })
+            // .catch(err => alert(err)) 
+            // console.log('before fetch',state.user)
+            // fetch(url+'messages/'+state.user.UserId)
+            // .then(response => response.json())
+            // .then(data => {
+            //     state = {
+            //         ...state,
+            //         user: {
+            //             ...state.user,
+            //             messagers: data
+            //         }
+            //     }
+            // })
+            // .catch(err => alert(err)) 
+            // // console.log('after fetch',state)
+            return state
     }
-
-    fetch(url+'vendors')
-    .then(response => response.json())
-    .then(data => {
-        state = {
-            ...state,
-            servicers: data
-        }
-    })
-    .catch(err => alert(err)) 
-
-    return state;
-
 }
 
 export default RootReducer
