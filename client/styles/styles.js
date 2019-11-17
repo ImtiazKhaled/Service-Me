@@ -35,4 +35,7 @@ export const styles = StyleSheet.create({
   topPad: {
     padding: 15,
   },
+  messageButton: {
+    backgroundColor: 'white'
+  }
 })

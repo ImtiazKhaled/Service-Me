@@ -1,4 +1,4 @@
-const url = 'http://localhost:4500/'
+const url = 'http://34.68.138.86:3001/'
 const initState = {
     categories: [
         {
@@ -78,14 +78,12 @@ const RootReducer = (state = initState, action) => {
 
     fetch(url+'vendors')
     .then(response => response.json())
-    .then(data =>
-        // console.log(state)
+    .then(data => {
         state = {
             ...state,
             servicers: data
         }
-        // console.log(state)
-    )
+    })
     .catch(err => alert(err)) 
 
     return state;

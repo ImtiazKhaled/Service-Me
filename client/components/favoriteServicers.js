@@ -12,6 +12,7 @@ class FavoriteServicers extends React.Component {
     }
     render() {
         const { servicers } = this.props
+        console.log(servicers)
         return (
             <Carousel
                 layout={'stack'}
@@ -25,7 +26,7 @@ class FavoriteServicers extends React.Component {
                             this.props.servicerSelected(item)
                         }}>
                         <Card
-                            image={{ uri: item.profilePicture }}
+                            image={{ uri: item.ProfilePicture }}
                             imageStyle={styles.favServicerCardImage}
                         >
                             <Text>{item.name}</Text>
