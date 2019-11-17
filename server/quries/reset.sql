@@ -34,23 +34,23 @@ CREATE TABLE MESSAGES(
 );
 
 
-LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/users'
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled07/Service-Me/server/dataset/users'
 INTO TABLE SMUSER
 FIELDS TERMINATED BY ','
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/vendors'
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled07/Service-Me/server/dataset/vendors'
 INTO TABLE VENDOR
 FIELDS TERMINATED BY ','
 IGNORE 1 ROWS;
 
 
-LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/messagesbetween'
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled07/Service-Me/server/dataset/messagesbetween'
 INTO TABLE MESSAGESBETWEEN
 FIELDS TERMINATED BY ','
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE '/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/messages'
+LOAD DATA LOCAL INFILE '/home/imtiazkhaled07/Service-Me/server/dataset/messages'
 INTO TABLE MESSAGES
 FIELDS TERMINATED BY ','
 IGNORE 1 ROWS;

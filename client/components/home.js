@@ -1,19 +1,35 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView, Image, SafeAreaView } from 'react-native'
 import { Overlay } from 'react-native-elements'
+import { styles } from '../styles/styles'
+import { connect } from 'react-redux'
+import { url } from '../url'
 import PopularItems from './popularItems'
 import FavoriteServicers from './favoriteServicers'
 import HomeTopBar from './homeTopBar'
-import { styles } from '../styles/styles'
 import Servicer from './servicer'
+
 
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      servicers:[],
       isVisible: false
     }
+  }
+
+  componentWillMount = () => {
+    fetch(url+'vendors')
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        servicers: data,
+      })
+    })
+    .catch(err => alert(err))
+    this.props.getVendors()
   }
 
   serviceSelected = type => {
@@ -37,7 +53,9 @@ class Home extends Component {
           <Text style={{ paddingTop: 20 }}>Previous Services</Text>
           <PopularItems navigateToServicer={this.serviceSelected} />
           <Text style={{ paddingTop: 20 }}>Favorite Servicers</Text>
-          <FavoriteServicers servicerSelected={(item, evt) => this.showModal(item, evt)} />
+          <FavoriteServicers 
+            servicers={this.state.servicers} 
+            servicerSelected={(item, evt) => this.showModal(item, evt)}/>
           <Overlay
             isVisible={this.state.isVisible}
             windowBackonBackdropPress={() => this.setState({ isVisible: false })}
@@ -58,5 +76,16 @@ class Home extends Component {
   }
 }
 
+mapStateToProps = state => {
+  return {
+    servicers: state.servicers
+  }
+}
 
-export default Home
+mapDispatchToProps = dispatch => {
+  return {
+    getVendors: () => dispatch({type: 'GET_VENDORS'})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

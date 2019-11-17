@@ -41,6 +41,7 @@ class ServicerCategory extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         servicers: state.servicers
     }

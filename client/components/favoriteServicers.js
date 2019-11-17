@@ -1,18 +1,12 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
-import { connect } from 'react-redux'
 import { SW, styles } from '../styles/styles'
 import { Card } from 'react-native-elements'
 
 class FavoriteServicers extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
     render() {
         const { servicers } = this.props
-        console.log(servicers)
         return (
             <Carousel
                 layout={'stack'}
@@ -29,7 +23,7 @@ class FavoriteServicers extends React.Component {
                             image={{ uri: item.ProfilePicture }}
                             imageStyle={styles.favServicerCardImage}
                         >
-                            <Text>{item.name}</Text>
+                            <Text>{item.FName + ' ' + item.LName}</Text>
                         </Card>
                     </TouchableOpacity>
                 }}
@@ -40,11 +34,4 @@ class FavoriteServicers extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        servicers: state.servicers
-    }
-}
-
-
-export default connect(mapStateToProps)(FavoriteServicers)
+export default FavoriteServicers
