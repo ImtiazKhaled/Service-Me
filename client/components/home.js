@@ -1,9 +1,10 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Image, SafeAreaView } from "react-native"
+import { View, Text, ScrollView, Button, SafeAreaView } from "react-native"
 import { Overlay } from "react-native-elements"
-import { styles } from "../styles/styles"
+import { styles, SH, SW } from "../styles/styles"
 import { connect } from "react-redux"
 import { url } from "../url"
+import Login from './login'
 import PopularItems from "./popularItems"
 import FavoriteServicers from "./favoriteServicers"
 import HomeTopBar from "./homeTopBar"
@@ -16,7 +17,8 @@ class Home extends Component {
     super(props)
     this.state = {
       servicers:[],
-      isVisible: false
+      isVisible: false,
+      loginVisible: false
     }
   }
 
@@ -41,12 +43,19 @@ class Home extends Component {
     })
   }
 
+  showSignIn = () => {
+    console.log('hi')
+    this.setState({
+      loginVisible: true
+    })
+  }
+
   render() {
     return (
       <SafeAreaView>
         <ScrollView>
           <View style={styles.topPad} />
-          <HomeTopBar />
+          <HomeTopBar signIn={this.showSignIn} />
           <Text>Catergories</Text>
           <PopularItems navigateToServicer={this.serviceSelected} />
           <Text style={{ paddingTop: 20 }}>Servicers</Text>
@@ -64,6 +73,20 @@ class Home extends Component {
             <Servicer closeModal={() => {
               console.log("hi")
               this.setState({ isVisible: false })
+            }} />
+          </Overlay>
+
+          <Overlay
+            isVisible={this.state.loginVisible}
+            windowBackonBackdropPress={() => this.setState({ loginVisible: false })}
+            groundColor="rgba(255, 255, 255, .5)"
+            overlayBackgroundColor="white"
+            width={SW*0.7}
+            height={SH*0.5}
+          >
+            <Login />
+            <Button title='Close' onPress={() => {
+              this.setState({ loginVisible: false })
             }} />
           </Overlay>
           <View style={{ padding: 30 }} />

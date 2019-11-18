@@ -19,7 +19,7 @@ export default class HomeTopBar extends React.Component {
         return (
             <Grid>
                 <Col style={styles.center} size={17}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.props.signIn}>
                         <Avatar
                             rounded
                             source={{
