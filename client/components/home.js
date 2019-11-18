@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { View, Text, ScrollView, Image, SafeAreaView } from 'react-native'
-import { Overlay } from 'react-native-elements'
-import { styles } from '../styles/styles'
-import { connect } from 'react-redux'
-import { url } from '../url'
-import PopularItems from './popularItems'
-import FavoriteServicers from './favoriteServicers'
-import HomeTopBar from './homeTopBar'
-import Servicer from './servicer'
+import React, { Component } from "react"
+import { View, Text, ScrollView, Image, SafeAreaView } from "react-native"
+import { Overlay } from "react-native-elements"
+import { styles } from "../styles/styles"
+import { connect } from "react-redux"
+import { url } from "../url"
+import PopularItems from "./popularItems"
+import FavoriteServicers from "./favoriteServicers"
+import HomeTopBar from "./homeTopBar"
+import Servicer from "./servicer"
 
 
 
@@ -21,7 +21,7 @@ class Home extends Component {
   }
 
   componentWillMount = () => {
-    fetch(url+'vendors')
+    fetch(url+"vendors")
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -32,7 +32,7 @@ class Home extends Component {
   }
 
   serviceSelected = type => {
-    this.props.navigation.navigate('Service', type)
+    this.props.navigation.navigate("Service", type)
   }
 
   showModal = (item) => {
@@ -62,7 +62,7 @@ class Home extends Component {
             height="auto"
           >
             <Servicer closeModal={() => {
-              console.log('hi')
+              console.log("hi")
               this.setState({ isVisible: false })
             }} />
           </Overlay>
@@ -81,7 +81,7 @@ mapStateToProps = state => {
 
 mapDispatchToProps = dispatch => {
   return {
-    getVendors: () => dispatch({type: 'GET_VENDORS'})
+    getVendors: () => dispatch({type: "GET_VENDORS"})
   }
 }
 

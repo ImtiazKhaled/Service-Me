@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { ScrollView, TouchableOpacity, SafeAreaView } from 'react-native'
-import { CardTen } from 'react-native-card-ui'
-import { connect } from 'react-redux'
-import { url } from '../url'
+import React, { Component } from "react"
+import { ScrollView, TouchableOpacity, SafeAreaView } from "react-native"
+import { CardTen } from "react-native-card-ui"
+import { connect } from "react-redux"
+import { url } from "../url"
 
 class ServicerCategory extends Component {
     constructor(props) {
@@ -13,10 +13,10 @@ class ServicerCategory extends Component {
     }
 
     componentDidMount = () => {
-        let id = JSON.stringify(this.props.navigation.getParam('id'))
+        let id = JSON.stringify(this.props.navigation.getParam("id"))
         id = id.substring(1, id.length - 1)
         console.log(id)
-        fetch(url+'vendors/'+id)
+        fetch(url+"vendors/"+id)
         .then(response => response.json())
         .then(data => {
           this.setState({
@@ -35,16 +35,16 @@ class ServicerCategory extends Component {
                         servicers.map(
                             (servicer) => {
                                 return <TouchableOpacity
-                                    onPress={() => alert('hi', servicer.name)}
+                                    onPress={() => alert("hi", servicer.name)}
                                     style={{ paddingTop: 80 }}
                                     key={servicer.UserId}>
                                     <CardTen
-                                        title={servicer.FName + ' ' + servicer.LName}
+                                        title={servicer.FName + " " + servicer.LName}
                                         subTitle={servicer.ServiceOffered}
                                         image={{ uri: servicer.ProfilePicture }}
                                         price={parseFloat(servicer.Rate)}
                                         star={parseInt(servicer.Rating)}
-                                        starsFor={'0'}
+                                        starsFor={"0"}
                                     />
                                 </TouchableOpacity>
                             }

@@ -1,30 +1,31 @@
-import React from 'react'
-import { TabBar } from 'react-native-animated-nav-tab-bar'
-import Icon from 'react-native-vector-icons/Feather'
-import Profile from '../components/profile'
-import { createAppContainer } from 'react-navigation'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
-import HomeNav from './homeNavigator'
-import MessagesNav from './messageNavigator'
+import React from "react"
+import { TabBar } from "react-native-animated-nav-tab-bar"
+import Icon from "react-native-vector-icons/Feather"
+import Profile from "../components/profile"
+import { createAppContainer } from "react-navigation"
+import { createBottomTabNavigator } from "react-navigation-tabs"
+import HomeNav from "./homeNavigator"
+import MessagesNav from "./messageNavigator"
+import ProfileNav from "./profileNavigation"
 
 export default createAppContainer(
     createBottomTabNavigator(
         {
             Home: HomeNav,
             Messages: MessagesNav,
-            Profie: Profile,
+            Profie: ProfileNav,
         }, {
         tabBarIcon:
-            { focused: true, horizontal: true, tintColor: 'hello' },
+            { focused: true, horizontal: true, tintColor: "hello" },
         tabBarOptions: {
-            activeTintColor: '#2B7C85',
-            inactiveTintColor: '#222222',
+            activeTintColor: "#2B7C85",
+            inactiveTintColor: "#222222",
         },
 
         tabBarComponent: props =>
             <TabBar
-                activeColors={['#e6b580', '#8e87d6', '#c095c9']} // or 
-                activeTabBackgrounds={['#ede7e6', '#eae3f6', '#eae4f6']} // or 
+                activeColors={["#e6b580", "#8e87d6", "#c095c9"]} // or 
+                activeTabBackgrounds={["#ede7e6", "#eae3f6", "#eae4f6"]} // or 
                 {...props}
             />,
     },
@@ -33,30 +34,30 @@ export default createAppContainer(
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
-                color={'#e6b580'}
+                color={"#e6b580"}
                 focused={focused}
                 tintColor={tintColor}
-                name='home'
+                name="home"
             />,
     },
     MessagesNav.navigationOptions = {
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
-                color={'#c095c9'}
+                color={"#c095c9"}
                 focused={focused}
                 tintColor={tintColor}
-                name='message-square'
+                name="message-square"
             />
     },
-    Profile.navigationOptions = {
+    ProfileNav.navigationOptions = {
         tabBarIcon: ({ focused, tintColor }) =>
             <Icon
                 size={24}
-                color={'#8e87d6'}
+                color={"#8e87d6"}
                 focused={focused}
                 tintColor={tintColor}
-                name='user'
+                name="user"
             />,
 
     },

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { TouchableOpacity, Button } from 'react-native';
-import { CardThree } from 'react-native-card-ui'
+import React, { Component } from "react";
+import { TouchableOpacity, Button } from "react-native";
+import { CardThree } from "react-native-card-ui"
 
 export default class Message extends Component {
     openMessage = (Messagee) => {
@@ -13,7 +13,7 @@ export default class Message extends Component {
             onPress={() => this.openMessage(this.props)} >
             <CardThree
                 title={message.FName + " " + message.LName}
-                subTitle=''
+                subTitle=""
                 profile={{ uri: message.ProfilePicture }}
             />
         </TouchableOpacity>

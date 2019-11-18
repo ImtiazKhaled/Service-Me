@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Text, ScrollView, TouchableOpacity } from 'react-native'
-import { Card } from 'react-native-elements'
-import { styles } from '../styles/styles'
-import { connect } from 'react-redux'
+import React, { Component } from "react"
+import { Text, ScrollView, TouchableOpacity } from "react-native"
+import { Card } from "react-native-elements"
+import { styles } from "../styles/styles"
+import { connect } from "react-redux"
 
 class PopularItems extends Component {
 

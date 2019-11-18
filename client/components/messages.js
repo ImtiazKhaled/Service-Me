@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { View, SafeAreaView } from 'react-native'
-import { connect } from 'react-redux'
-import { styles } from '../styles/styles'
-import { url } from '../url' 
-import Message from './message'
+import React, { Component } from "react"
+import { View, SafeAreaView } from "react-native"
+import { connect } from "react-redux"
+import { styles } from "../styles/styles"
+import { url } from "../url" 
+import Message from "./message"
 
 class Messages extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Messages extends Component {
   }
   
   componentWillMount = () => {
-    fetch(url+'messages/'+this.props.UserId)
+    fetch(url+"messages/"+this.props.UserId)
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -28,7 +28,7 @@ class Messages extends Component {
     const ChatIds = {
       Messagee: Messagee.message.Messagee, Messager: Messagee.message.Messager
     }
-    this.props.navigation.navigate('Chat', ChatIds)
+    this.props.navigation.navigate("Chat", ChatIds)
   }
 
   render() {

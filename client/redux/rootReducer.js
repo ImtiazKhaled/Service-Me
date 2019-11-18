@@ -1,72 +1,49 @@
-const url = 'http://34.68.138.86:3001/'
+const url = "http://34.68.138.86:3001/"
 
 var initState = {
     categories: [
         {
-            id: 'Appliances',
+            id: "Appliances",
         },
         {
-            id: 'Electrical',
+            id: "Electrical",
         },
         {
-            id: 'Plumbing',
+            id: "Plumbing",
         },
         {
-            id: 'Home Tutoring',
+            id: "Home Tutoring",
         },
         {
-            id: 'Packaging Moving',
+            id: "Packaging Moving",
         },
         {
-            id: 'Painting',
+            id: "Painting",
         },
         {
-            id: 'Cleaning',
+            id: "Cleaning",
         },
         {
-            id: 'Computer Repair',
+            id: "Computer Repair",
         },
         {
-            id: 'Home Repair',
+            id: "Home Repair",
         },
         {
-            id: 'Pest Control',
+            id: "Pest Control",
         },
     ],
     servicers: [],
     user: {
-        UserId: 'AC111400',
+        UserId: "LI111400",
         messagers: [],
-        chat: [
-            {
-                MessageId: 'markimtiaz1',
-                Sender: 'imtiazi',
-                Receiver: 'mark',
-                MessageText: 'Hello there!',
-                SendAt: '1573966460561'     
-            },
-            {
-                MessageId: 'markimtiaz1',
-                Receiver: 'imtiazi',
-                Sender: 'mark',
-                MessageText: 'Hello there!',
-                SendAt: '1573966490562'     
-            },
-            {
-                MessageId: 'markimtiaz1',
-                Sender: 'imtiazi',
-                Receiver: 'mark',
-                MessageText: 'Hello there!',
-                SendAt: '1573966490562'     
-            },
-        ]
-    }
+      }
 }
 
 const RootReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'GET_VENDORS':
-            fetch(url+'vendors')
+        case "GET_VENDORS":
+            fetch(url+"vendors")
             .then(response => response.json())
             .then(data => {
                 state = {
@@ -78,7 +55,7 @@ const RootReducer = (state = initState, action) => {
             })
             .catch(err => alert(err)) 
         default:
-            // fetch(url+'vendors')
+            // fetch(url+"vendors")
             // .then(response => response.json())
             // .then(data => {
             //     state = {
@@ -88,8 +65,8 @@ const RootReducer = (state = initState, action) => {
             //     return state
             // })
             // .catch(err => alert(err)) 
-            // console.log('before fetch',state.user)
-            // fetch(url+'messages/'+state.user.UserId)
+            // console.log("before fetch",state.user)
+            // fetch(url+"messages/"+state.user.UserId)
             // .then(response => response.json())
             // .then(data => {
             //     state = {
@@ -101,7 +78,7 @@ const RootReducer = (state = initState, action) => {
             //     }
             // })
             // .catch(err => alert(err)) 
-            // // console.log('after fetch',state)
+            // // console.log("after fetch",state)
             return state
     }
 }

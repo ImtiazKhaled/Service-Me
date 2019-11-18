@@ -1,7 +1,7 @@
-import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
-import Messages from '../components/messages'
-import Chat from '../components/chat'
+import { createAppContainer } from "react-navigation"
+import { createStackNavigator } from "react-navigation-stack"
+import Messages from "../components/messages"
+import Chat from "../components/chat"
 
 const Navigator = createStackNavigator({
     Messages: { screen: Messages },
@@ -11,7 +11,7 @@ const Navigator = createStackNavigator({
         header: null,
     },
     Chat.navigationOptions = {
-        title: 'Messages',
+        title: "Messages",
     },
 )
 

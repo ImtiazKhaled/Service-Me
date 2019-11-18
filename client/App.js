@@ -1,8 +1,8 @@
-import React from 'react'
-import MainNavigation from './navigators/mainNavigation'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
-import RootReducer from './redux/rootReducer'
+import React from "react"
+import MainNavigation from "./navigators/mainNavigation"
+import { Provider } from "react-redux"
+import { createStore, applyMiddleware, compose } from "redux"
+import RootReducer from "./redux/rootReducer"
 
 const store = createStore(RootReducer)
 

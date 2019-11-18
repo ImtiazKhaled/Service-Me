@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, Button } from "react-native";
 
 export default class Sevicer extends Component {
   render() {
@@ -7,7 +7,7 @@ export default class Sevicer extends Component {
       <View>
         <Text> Servicer Info </Text>
         <Button title="close Modal" onPress={() => {
-          console.log('button Clicked')
+          console.log("button Clicked")
           this.props.closeModal()
         }} />
       </View>
