@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { View, SafeAreaView } from "react-native"
 import { connect } from "react-redux"
 import { styles } from "../styles/styles"
-import { url } from "../url" 
+import { url } from "../secrets" 
 import Message from "./message"
 
 class Messages extends Component {

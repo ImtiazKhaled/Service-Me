@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS SERVICEME;
 CREATE DATABASE SERVICEME;
 USE SERVICEME;
 
+
 CREATE TABLE SMUSER(
 	UserId VARCHAR(50) PRIMARY KEY,
 	FName VARCHAR(50) NOT NULL,
@@ -35,23 +36,48 @@ CREATE TABLE MESSAGES(
 );
 
 
-LOAD DATA LOCAL INFILE "/home/imtiazkhaled07/Service-Me/server/dataset/users"
+CREATE TABLE CUSTOMER(
+	UserId VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Phone VARCHAR(50) NOT NULL,
+	FOREIGN KEY(UserId) REFERENCES SMUSER(UserId)
+);
+
+
+CREATE TABLE GENERATEDORDER(
+	CustomerId VARCHAR(50) NOT NULL,
+	VendorId VARCHAR(50) NOT NULL,
+	TotalCharge VARCHAR(50) NOT NULL,
+	OrderStatus VARCHAR(50) NOT NULL,
+	Rating VARCHAR(50) NOT NULL,
+	Review VARCHAR(50) NOT NULL,
+	FOREIGN KEY(CustomerId) REFERENCES CUSTOMER(UserId),
+	FOREIGN KEY(VendorId) REFERENCES VENDOR(UserId)
+);
+
+
+LOAD DATA LOCAL INFILE "/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/users"
 INTO TABLE SMUSER
 FIELDS TERMINATED BY ","
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE "/home/imtiazkhaled07/Service-Me/server/dataset/vendors"
+LOAD DATA LOCAL INFILE "/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/vendors"
 INTO TABLE VENDOR
 FIELDS TERMINATED BY ","
 IGNORE 1 ROWS;
 
 
-LOAD DATA LOCAL INFILE "/home/imtiazkhaled07/Service-Me/server/dataset/messagesbetween"
+LOAD DATA LOCAL INFILE "/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/messagesbetween"
 INTO TABLE MESSAGESBETWEEN
 FIELDS TERMINATED BY ","
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE "/home/imtiazkhaled07/Service-Me/server/dataset/messages"
+LOAD DATA LOCAL INFILE "/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/messages"
 INTO TABLE MESSAGES
+FIELDS TERMINATED BY ","
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE "/home/imtiazkhaled/Desktop/classes/Intro to Software/Service-Me/server/dataset/customers"
+INTO TABLE CUSTOMER
 FIELDS TERMINATED BY ","
 IGNORE 1 ROWS;

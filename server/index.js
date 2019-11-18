@@ -1,7 +1,5 @@
 const app = require("express")()
 const bodyParser = require("body-parser")
-const mysql = require("mysql")
-const cors =  require("cors")
 const port = 3001
 
 // middleware
@@ -11,9 +9,11 @@ app.use(bodyParser.json())
 const vendorsRoutes = require("./routes/vendors")
 const vendorRoutes = require("./routes/vendor")
 const messagesRoutes = require("./routes/messages")
+const customerRoutes = require("./routes/customer")
 app.use("/vendors", vendorsRoutes)
 app.use("/vendor", vendorRoutes)
 app.use("/messages", messagesRoutes)
+app.use("/customer", customerRoutes)
 
 
 app.listen(port, () => {

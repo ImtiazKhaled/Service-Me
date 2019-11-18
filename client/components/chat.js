@@ -3,7 +3,7 @@ import { ScrollView, View, Text, TextInput, KeyboardAvoidingView } from "react-n
 import { Card, Input, Button } from "react-native-elements"
 import { Col, Grid } from "react-native-easy-grid"
 import {styles} from "../styles/styles"
-import { url } from "../url"
+import { url } from "../secrets"
 import Icon from "react-native-vector-icons/FontAwesome"
 
 class Chat extends Component {

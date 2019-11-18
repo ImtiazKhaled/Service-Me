@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Button, SafeAreaView } from "react-native"
 import { Overlay } from "react-native-elements"
 import { styles, SH, SW } from "../styles/styles"
 import { connect } from "react-redux"
-import { url } from "../url"
+import { url } from "../secrets"
 import Login from './login'
 import PopularItems from "./popularItems"
 import FavoriteServicers from "./favoriteServicers"

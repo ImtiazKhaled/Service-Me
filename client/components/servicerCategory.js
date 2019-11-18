@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { ScrollView, TouchableOpacity, SafeAreaView } from "react-native"
 import { CardTen } from "react-native-card-ui"
 import { connect } from "react-redux"
-import { url } from "../url"
+import { url } from "../secrets"
 
 class ServicerCategory extends Component {
     constructor(props) {

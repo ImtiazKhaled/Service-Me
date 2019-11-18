@@ -1,5 +1,3 @@
-const url = "http://34.68.138.86:3001/"
-
 var initState = {
     categories: [
         {
@@ -50,35 +48,10 @@ const RootReducer = (state = initState, action) => {
                     ...state,
                     servicers: data
                 }
-                // console.log(state)
                 return state
             })
             .catch(err => alert(err)) 
         default:
-            // fetch(url+"vendors")
-            // .then(response => response.json())
-            // .then(data => {
-            //     state = {
-            //         servicers: data,
-            //         ...state
-            //     }
-            //     return state
-            // })
-            // .catch(err => alert(err)) 
-            // console.log("before fetch",state.user)
-            // fetch(url+"messages/"+state.user.UserId)
-            // .then(response => response.json())
-            // .then(data => {
-            //     state = {
-            //         ...state,
-            //         user: {
-            //             ...state.user,
-            //             messagers: data
-            //         }
-            //     }
-            // })
-            // .catch(err => alert(err)) 
-            // // console.log("after fetch",state)
             return state
     }
 }
