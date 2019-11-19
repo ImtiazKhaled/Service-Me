@@ -55,6 +55,7 @@ class Login extends React.Component {
         Phone: this.state.phone,
         ProfilePicture: this.state.photoUrl,
         Rating: 5.00,
+        Rate: this.state.rate,
         ServiceOffered: this.state.serviceType
       }
       

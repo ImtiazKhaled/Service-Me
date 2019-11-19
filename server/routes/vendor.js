@@ -34,7 +34,7 @@ router.post("/", (req, res) => {
     const UserId = req.body.FName.charAt(0) + req.body.LName.charAt(0) + today
     
     const ADD_USER = `INSERT INTO SMUSER VALUES("${UserId}","${req.body.FName}","${req.body.LName}","${CreatedAt}","${req.body.ProfilePicture}")`
-    const ADD_VENDOR = `INSERT INTO VENDOR VALUES("${UserId}","${req.body.ServiceOffered}","${req.body.Rating}")`
+    const ADD_VENDOR = `INSERT INTO VENDOR VALUES("${UserId}","${req.body.ServiceOffered}","${req.body.Rating}","${req.body.Rate}")`
     console.log(ADD_USER+"\n"+ ADD_VENDOR)
 
     connection.query(ADD_USER, (err, data) => {
