@@ -10,10 +10,12 @@ const vendorsRoutes = require("./routes/vendors")
 const vendorRoutes = require("./routes/vendor")
 const messagesRoutes = require("./routes/messages")
 const customerRoutes = require("./routes/customer")
+const userRoutes = require("./routes/user")
 app.use("/vendors", vendorsRoutes)
 app.use("/vendor", vendorRoutes)
 app.use("/messages", messagesRoutes)
 app.use("/customer", customerRoutes)
+app.use("/user", userRoutes)
 
 
 app.listen(port, () => {

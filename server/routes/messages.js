@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 router.get("/:SenderId/:ReceiverId", (req, res) => {
     var SenderId = req.params.SenderId
     var ReceiverId = req.params.ReceiverId
-    const GET_CHAT = `SELECT * FROM MESSAGES WHERE (Sender="${SenderId}" AND Receiver="${ReceiverId}") OR (Receiver="${SenderId}" AND Sender="${ReceiverId}")`
+    const GET_CHAT = `SELECT * FROM MESSAGES WHERE (Sender="${SenderId}" AND Receiver="${ReceiverId}") OR (Receiver="${SenderId}" AND Sender="${ReceiverId}") ORDER BY SendAt ASC`
     console.log(GET_CHAT)
     connection.query(GET_CHAT, (err, data) => {
         if(data) {

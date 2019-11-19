@@ -37,5 +37,11 @@ export const styles = StyleSheet.create({
   },
   messageButton: {
     backgroundColor: "white"
+  },
+  messageTitle: {
+    height: SH*0.10
+  },
+  messageBox: {
+    height: SH*0.08
   }
 })

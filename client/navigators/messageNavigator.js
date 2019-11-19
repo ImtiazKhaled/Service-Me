@@ -11,7 +11,7 @@ const Navigator = createStackNavigator({
         header: null,
     },
     Chat.navigationOptions = {
-        title: "Messages",
+        header: null,
     },
 )
 

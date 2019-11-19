@@ -60,7 +60,6 @@ class Login extends React.Component {
       }
       
       this.state.type === "Customer" ? 
-      // console.log(customer) : console.log(vendor)
       fetch(url+'customer', {
         method: 'POST',
         headers: {
@@ -91,7 +90,6 @@ class Login extends React.Component {
     }
 
     render() {
-      const { categories } = this.props
       return (
         <ScrollView ref='_scrollView'>
             <Icon.Button
