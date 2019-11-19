@@ -1,12 +1,12 @@
-import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import { SearchBar, Avatar } from 'react-native-elements'
-import { styles } from '../styles/styles'
+import React from "react"
+import { TouchableOpacity } from "react-native"
+import { SearchBar, Avatar } from "react-native-elements"
+import { styles } from "../styles/styles"
 import { Col, Grid } from "react-native-easy-grid"
 
 export default class HomeTopBar extends React.Component {
     state = {
-        search: '',
+        search: "",
     }
 
     updateSearch = search => {
@@ -19,12 +19,12 @@ export default class HomeTopBar extends React.Component {
         return (
             <Grid>
                 <Col style={styles.center} size={17}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.props.signIn}>
                         <Avatar
                             rounded
                             source={{
                                 uri:
-                                    'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                                    "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
                             }}
                         />
                     </TouchableOpacity>

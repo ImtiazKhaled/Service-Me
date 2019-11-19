@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Text, ScrollView, TouchableOpacity } from 'react-native'
-import { Card } from 'react-native-elements'
-import { styles } from '../styles/styles'
-import { connect } from 'react-redux'
+import React, { Component } from "react"
+import { Text, ScrollView, TouchableOpacity } from "react-native"
+import { Card } from "react-native-elements"
+import { styles } from "../styles/styles"
+import { connect } from "react-redux"
 
 class PopularItems extends Component {
 
@@ -18,11 +18,11 @@ class PopularItems extends Component {
                 showsHorizontalScrollIndicator={false}
             >
                 {categories.map((type) =>
-                    <TouchableOpacity key={type.title} onPress={() => this.navigateToServicer(type)}>
+                    <TouchableOpacity key={type.id} onPress={() => this.navigateToServicer(type)}>
                         <Card
                             containerStyle={styles.itemCards}>
                             <Text>
-                                {type.title}
+                                {type.id}
                             </Text>
                         </Card>
                     </TouchableOpacity>

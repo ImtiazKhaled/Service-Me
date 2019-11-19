@@ -1,18 +1,18 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions } from "react-native"
 
 const Theme = {
-  backgroundColor: '#ffffff'
+  backgroundColor: "#ffffff"
 }
 
-export const SW = Math.round(Dimensions.get('window').width)
-export const SH = Math.round(Dimensions.get('window').height)
+export const SW = Math.round(Dimensions.get("window").width)
+export const SH = Math.round(Dimensions.get("window").height)
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Theme.backgroundColor,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   itemCards: {
     width: SW * 0.40,
@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
   },
   favServicerCardImage: {
-    width: SW * 0.50,
-    height: SH * 0.40,
+    width: SW * 0.55,
+    height: SH * 0.50,
   },
   searchBarContainer: {
     backgroundColor: Theme.backgroundColor,
@@ -29,10 +29,19 @@ export const styles = StyleSheet.create({
     borderTopColor: Theme.backgroundColor,
   },
   center: {
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   },
   topPad: {
     padding: 15,
   },
+  messageButton: {
+    backgroundColor: "white"
+  },
+  messageTitle: {
+    height: SH*0.10
+  },
+  messageBox: {
+    height: SH*0.08
+  }
 })
