@@ -12,8 +12,8 @@ class Chat extends Component {
         this.state = {
           chat:[]
         }
-      }
-      
+    }
+
     componentWillMount = () => {
         let Messagee = JSON.stringify(this.props.navigation.getParam("Messagee"))
         Messagee = Messagee.substring(1, Messagee.length - 1)

@@ -7,7 +7,6 @@ export default class Sevicer extends Component {
       <View>
         <Text> Servicer Info </Text>
         <Button title="close Modal" onPress={() => {
-          console.log("button Clicked")
           this.props.closeModal()
         }} />
       </View>

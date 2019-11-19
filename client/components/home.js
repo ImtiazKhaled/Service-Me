@@ -44,9 +44,14 @@ class Home extends Component {
   }
 
   showSignIn = () => {
-    console.log('hi')
     this.setState({
       loginVisible: true
+    })
+  }
+
+  closeLogin = () => {
+    this.setState({
+      loginVisible: false
     })
   }
 
@@ -71,7 +76,6 @@ class Home extends Component {
             height="auto"
           >
             <Servicer closeModal={() => {
-              console.log("hi")
               this.setState({ isVisible: false })
             }} />
           </Overlay>
@@ -84,10 +88,11 @@ class Home extends Component {
             width={SW*0.7}
             height={SH*0.5}
           >
-            <Login />
-            <Button title='Close' onPress={() => {
-              this.setState({ loginVisible: false })
-            }} />
+            <ScrollView>
+              <Login 
+                closeModal={this.closeLogin}
+              />
+            </ScrollView>
           </Overlay>
           <View style={{ padding: 30 }} />
         </ScrollView>
