@@ -18,7 +18,8 @@ class Home extends Component {
     this.state = {
       servicers:[],
       isVisible: false,
-      loginVisible: false
+      loginVisible: false,
+      OverlayVendor: {},
     }
   }
 
@@ -38,6 +39,9 @@ class Home extends Component {
   }
 
   showModal = (item) => {
+    this.setState({
+      OverlayVendor: item
+    })
     this.setState({
       isVisible: true
     })
@@ -71,11 +75,11 @@ class Home extends Component {
             isVisible={this.state.isVisible}
             windowBackonBackdropPress={() => this.setState({ isVisible: false })}
             groundColor="rgba(255, 255, 255, .5)"
-            overlayBackgroundColor="red"
-            width="auto"
-            height="auto"
+            overlayBackgroundColor="white"
+            width={SW*0.7}
+            height={SH*0.5}
           >
-            <Servicer closeModal={() => {
+            <Servicer vendor={this.state.OverlayVendor} closeModal={() => {
               this.setState({ isVisible: false })
             }} />
           </Overlay>

@@ -1,21 +1,26 @@
 import React, { Component } from "react"
 import { ScrollView, TouchableOpacity, SafeAreaView } from "react-native"
+import { Overlay } from "react-native-elements"
 import { CardTen } from "react-native-card-ui"
 import { connect } from "react-redux"
 import { url } from "../secrets"
+import { SW, SH } from "../styles/styles"
+import Servicer from "./servicer"
+
 
 class ServicerCategory extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          servicers:[]
+          isVisible: false,
+          servicers:[],
+          OverlayVendor: {}
         }
     }
 
     componentDidMount = () => {
         let id = JSON.stringify(this.props.navigation.getParam("id"))
         id = id.substring(1, id.length - 1)
-        console.log(id)
         fetch(url+"vendors/"+id)
         .then(response => response.json())
         .then(data => {
@@ -26,6 +31,16 @@ class ServicerCategory extends Component {
         .catch(err => alert(err))
     }
 
+    showModal = (item) => {
+        this.setState({
+          OverlayVendor: item
+        })
+        this.setState({
+          isVisible: true
+        })
+    }
+    
+
     render() {
         const {servicers} = this.state
         return (
@@ -35,7 +50,7 @@ class ServicerCategory extends Component {
                         servicers.map(
                             (servicer) => {
                                 return <TouchableOpacity
-                                    onPress={() => alert("hi", servicer.name)}
+                                    onPress={(evt) => {this.showModal(servicer)}}
                                     style={{ paddingTop: 80 }}
                                     key={servicer.UserId}>
                                     <CardTen
@@ -50,6 +65,18 @@ class ServicerCategory extends Component {
                             }
                         )
                     }
+                <Overlay
+                        isVisible={this.state.isVisible}
+                        windowBackonBackdropPress={() => this.setState({ isVisible: false })}
+                        groundColor="rgba(255, 255, 255, .5)"
+                        overlayBackgroundColor="white"
+                        width={SW*0.7}
+                        height={SH*0.5}
+                    >
+                        <Servicer vendor={this.state.OverlayVendor} closeModal={() => {
+                        this.setState({ isVisible: false })
+                        }} />
+                </Overlay>
                 </ScrollView>
             </SafeAreaView>
         )
