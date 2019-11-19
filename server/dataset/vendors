@@ -1,19 +1,19 @@
-UserId,ServiceOffered,Rating,Rate
-LI111400,Appliances,5.00,12.5
-YM111400,Electrical,3.56,12.5
-KN111400,Plumbing,4.21,12.5
-BB111400,Plumbing,3.97,12.5
-BK111400,Home Tutoring,3.31,12.5
-KB111400,Home Tutoring,2.02,12.5
-JM111400,Packaging Moving,0.61,12.5
-LR111400,Painting,1.93,12.5
-PW111400,Packaging Moving,3.81,12.5
-AP111400,Cleaning,3.92,12.5
-JC111400,Cleaning,4.95,12.5
-LP111400,Computer Repair,4.83,12.5
-KO111400,Computer Repair,5.00,12.5
-CP111400,Home Repair,3.21,12.5
-NO111400,Home Repair,3.56,12.5
-CO111400,Painting,2.89,12.5
-LO111400,Pest Control,2.69,12.5
-AC111400,Pest Control,4.65,12.5
+UserId,ServiceOffered,Rating,Rate,Email
+LI111400,Appliances,5.00,12.5,testOne@gmail.com
+YM111400,Electrical,3.56,12.5,testTwo@gmail.com
+KN111400,Plumbing,4.21,12.5,testThree@gmail.com
+BB111400,Plumbing,3.97,12.5,testFour@gmail.com
+BK111400,Home Tutoring,3.31,12.5,testFive@gmail.com
+KB111400,Home Tutoring,2.02,12.5,testSix@gmail.com
+JM111400,Packaging Moving,0.61,12.5,testSeven@gmail.com
+LR111400,Painting,1.93,12.5,testEight@gmail.com
+PW111400,Packaging Moving,3.81,12.5,testNine@gmail.com
+AP111400,Cleaning,3.92,12.5,testTen@gmail.com
+JC111400,Cleaning,4.95,12.5,testEleven@gmail.com
+LP111400,Computer Repair,4.83,12.5,testTwelve@gmail.com
+KO111400,Computer Repair,5.00,12.5,testThirteen@gmail.com
+CP111400,Home Repair,3.21,12.5,testFourteen@gmail.com
+NO111400,Home Repair,3.56,12.5,testFifteen@gmail.com
+CO111400,Painting,2.89,12.5,testSixteen@gmail.com
+LO111400,Pest Control,2.69,12.5,testSeventeen@gmail.com
+AC111400,Pest Control,4.65,12.5,testEighteen@gmail.com

@@ -10,10 +10,30 @@ class Messages extends Component {
     super(props)
     this.state = {
       messagers:[],
+      UserId: "",
     }
   }
   
   componentWillMount = () => {
+    this.props.type === "Customer" ?
+    fetch(url+"messages/customer/"+this.props.Email)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        UserId: data[0],
+      })
+    })
+    .catch(err => alert(err)) :
+    fetch(url+"messages/vendor/"+this.props.Email)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        UserId: data[0],
+      })
+    })
+    .catch(err => alert(err))
+
+    
     fetch(url+"messages/"+this.props.UserId)
     .then(response => response.json())
     .then(data => {
