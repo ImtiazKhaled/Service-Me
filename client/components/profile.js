@@ -15,53 +15,56 @@ class Profile extends Component {
     }
   }
 
-  componentWillMount = () => {
-    fetch(url+"vendor/"+this.props.UserId)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          user: data
-        })
-      })
-     .catch(err => alert(err))
-  }
-
   render() {
-    const { user } = this.state
-    // console.log(this.props)
+    const { user } = this.props
+    console.log(this.props)
     return (
       <ScrollView>
-        <View
+        {
+          this.props.user.SignedIn ? 
+          <View
           style={{ ...styles.center, paddingTop: 30 }}
-        >
-          <Avatar
-            size="xlarge"
-            rounded
-            source={{ uri: user.ProfilePicture }}
-          />
-          <Text>
-            {user.FName + " " + user.LName}
-          </Text>
-          <Text>
-            {user.ServiceOffered}
-          </Text>
-          <Grid style={{ ...styles.center}}>
-            <Col size={40}>
-              <Button title="Message" />
-            </Col>
-            <Col size={40}>
-              <Button title="Set Appointment" />
-            </Col>
-          </Grid>
-        </View>
+          >
+            <Avatar
+              size="xlarge"
+              rounded
+              source={{ uri: user.ProfilePicture }}
+            />
+            <Text>
+              {user.FName + " " + user.LName}
+            </Text>
+            <Text>
+              {user.Email}
+            </Text>
+            <Text>
+              {user.phone}
+            </Text>
+            <Text>
+              {user.Type}
+            </Text>
+            <Text>
+              {user.serviceType}
+            </Text>
+            <Text>
+              {user.rate}
+            </Text>
+          </View> :
+          <View>
+            <Text>
+              Please login
+            </Text>
+          </View>
+        }
+        
       </ScrollView>
     )
   }
 }
 
+
 const mapStateToProps = (state) => {  
   return {
-    UserId: state.user.UserId
+    user: state.user
   }
 } 
 

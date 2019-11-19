@@ -34,6 +34,7 @@ var initState = {
     servicers: [],
     user: {
         UserId: "AC111400",
+        SignedIn: false,
         messagers: [],
       }
 }
@@ -51,6 +52,13 @@ const RootReducer = (state = initState, action) => {
                 return state
             })
             .catch(err => alert(err)) 
+            return state
+        case "LOGIN_SUCESS":
+            state = {
+                ...state,
+                user: action.user
+            }
+            return state
         default:
             return state
     }

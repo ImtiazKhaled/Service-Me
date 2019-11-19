@@ -58,7 +58,7 @@ class Home extends Component {
       loginVisible: false
     })
   }
-
+  
   render() {
     return (
       <SafeAreaView>

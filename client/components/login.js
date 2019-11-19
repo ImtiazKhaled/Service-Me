@@ -47,6 +47,8 @@ class Login extends React.Component {
         Email: this.state.email,
         Phone: this.state.phone,
         ProfilePicture: this.state.photoUrl,
+        Type: this.state.type,
+        SignedIn: true
       }
       const vendor = {
         FName: this.state.givenName,
@@ -56,9 +58,13 @@ class Login extends React.Component {
         ProfilePicture: this.state.photoUrl,
         Rating: 5.00,
         Rate: this.state.rate,
-        ServiceOffered: this.state.serviceType
+        ServiceOffered: this.state.serviceType,
+        Type: this.state.type,
+        SignedIn: true
       }
-      
+
+      this.props.onLoginSucess(vendor) 
+
       this.state.type === "Customer" ? 
       fetch(url+'customer', {
         method: 'POST',
@@ -68,7 +74,7 @@ class Login extends React.Component {
       },
       body: JSON.stringify(customer)
       }).then(response => {
-          console.log(response)
+          this.props.closeModal()
       })
       .catch(error => {
           console.log(error)
@@ -82,7 +88,7 @@ class Login extends React.Component {
       },
       body: JSON.stringify(vendor)
       }).then(response => {
-          console.log(response)
+          this.props.closeModal()
       })
       .catch(error => {
           console.log(error)
@@ -178,5 +184,14 @@ mapStateToProps = state => {
   }
 }
 
+mapDispatchToProps = dispatch => {
+  return{
+    onLoginSucess: (user) => dispatch({
+      type: 'LOGIN_SUCESS',
+      user
+    })
+  }
+}
 
-export default connect(mapStateToProps)(Login)
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)

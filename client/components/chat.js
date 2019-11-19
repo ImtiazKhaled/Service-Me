@@ -75,7 +75,13 @@ class Chat extends Component {
         return (
             <KeyboardAvoidingView style={{flex:1}} behavior="padding">
                 <Button buttonStyle={styles.messageTitle} title={Messagee} />
-                <ScrollView>
+                <ScrollView
+                    ref='_scrollView'
+                    onContentSizeChange={
+                        (contentHeight) => {
+                            this.refs._scrollView.scrollTo({y: contentHeight, animated: true});
+                        }}    
+                >
                 {
                     chat.length === 0 ? 
                     <Card title="Start Chatting!" />
