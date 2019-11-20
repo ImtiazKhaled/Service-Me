@@ -5,11 +5,22 @@ import { CardFive } from "react-native-card-ui"
 import { url } from "../secrets"
 import { Col, Grid } from "react-native-easy-grid"
 import { styles, SH, SW } from "../styles/styles"
+import { connect } from "react-redux"
+import { withNavigation } from "react-navigation"
 import Stars from "react-native-stars-rating"
 
-export default class Sevicer extends Component {
+class Servicer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      messagers:[],
+      UserId: "",
+    }
+  }
+
   render() {
     const { vendor } = this.props
+    const { user } = this.props
     return (
       <ScrollView>
         <View style={{ ...styles.center, paddingTop: 30 }} >
@@ -37,7 +48,24 @@ export default class Sevicer extends Component {
           />
           <Grid style={{ ...styles.center}}>
             <Col size={40}>
-              <Button title="Message" />
+              {
+                user.SignedIn ? 
+                <Button 
+                  title="Message"
+                  onPress={()=>{
+                    const ChatIds = {
+                      Messagee: vendor.UserId,
+                      Messager: user.UserId
+                    }
+                    this.props.navigation.navigate("Chat", ChatIds)
+                    this.props.closeModal()  
+                  }} 
+                /> :
+                <Button 
+                  title="Message"
+                  disabled   
+                />
+              }
             </Col>
             <Col size={40}>
               <Button title="Set Appointment" />
@@ -52,3 +80,12 @@ export default class Sevicer extends Component {
     )
   }
 }
+
+
+mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default withNavigation(connect(mapStateToProps)(Servicer))

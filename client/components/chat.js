@@ -44,7 +44,29 @@ class Chat extends Component {
             MessageText: this.state.message,
         }
 
-        console.log(messageToSend)
+        if(this.state.chat.length === 0)    {
+            
+            const messageStart = {
+                Sender: this.state.messager,
+                Receiver: this.state.messagee,        
+            }
+
+            fetch(url+"messages/add/"+this.state.messagee+"/"+this.state.messager)
+            .then(response => {
+                    fetch(url+"messages/"+this.state.messagee+"/"+this.state.messager)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.setState({
+                            chat: data,
+                            message: ''
+                        })
+                    })
+                    .catch(err => alert(err))
+                })
+                .catch(error => {
+                    console.log(error)
+            })
+        }
 
         fetch(url+'messages', {
             method: 'POST',

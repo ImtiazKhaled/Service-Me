@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, SafeAreaView } from "react-native"
+import { View, SafeAreaView, Text } from "react-native"
 import { connect } from "react-redux"
 import { styles } from "../styles/styles"
 import { url } from "../secrets" 
@@ -15,38 +15,43 @@ class Messages extends Component {
   }
   
   componentWillMount = () => {
-    this.props.type === "Customer" ?
-    fetch(url+"messages/customer/"+this.props.Email)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        UserId: data[0],
+    if(this.props.user.SignedIn) {
+      this.props.user.type === "Customer" ?
+      fetch(url+"messages/customer/"+this.props.user.Email)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          UserId: data[0],
+        })
       })
-    })
-    .catch(err => alert(err)) :
-    fetch(url+"messages/vendor/"+this.props.Email)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        UserId: data[0],
+      .catch(err => alert(err)) :
+      fetch(url+"messages/vendor/"+this.props.user.Email)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          UserId: data[0],
+        })
       })
-    })
-    .catch(err => alert(err))
-
-    
-    fetch(url+"messages/"+this.props.UserId)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        messagers: data,
+      .catch(err => alert(err))
+  
+      
+      fetch(url+"messages/"+this.state.UserId)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          messagers: data,
+        })
       })
-    })
-    .catch(err => alert(err))
+      .catch(err => alert(err))   
+    } else {
+      return
+    }
   }
 
   openMessage = (Messagee) => {
     const ChatIds = {
-      Messagee: Messagee.message.Messagee, Messager: Messagee.message.Messager
+      Messagee: Messagee.message.Messagee, 
+      Messager: Messagee.message.Messager
     }
     this.props.navigation.navigate("Chat", ChatIds)
   }
@@ -55,8 +60,11 @@ class Messages extends Component {
     const { messagers } = this.state
     return (
       <SafeAreaView>
+        {
+          this.props.user.SignedIn ? 
         <View style={styles.topPad}>
           {
+            
             messagers.map(
                 (message) => {
                   return <Message 
@@ -66,16 +74,22 @@ class Messages extends Component {
                 }
             )
           }
+        </View> :
+        <View>
+          <Text>
+              Please login
+            </Text>
         </View>
+        }
       </SafeAreaView>
     )
   }
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {  
   return {
-      UserId: state.user.UserId
+      user: state.user
   }
 }
 

@@ -30,7 +30,21 @@ class Login extends React.Component {
             this.setState({
               ...user,
               signedIn: true
-            })
+          })
+          fetch(url+"customer/"+this.state.email)
+          .then(response => response.json())
+          .then(data => {
+            if(data != "That user does not exist"){
+              check = data 
+              const customer = {...data, SignedIn: true}
+              this.props.onLoginSucess(customer) 
+              this.props.closeModal()    
+            } else {
+              return
+            }
+          })
+
+
           this.refs._scrollView.scrollTo({ y:200, animated: true })
           } else {
                 console.log("Sign-in Failed")
@@ -63,8 +77,6 @@ class Login extends React.Component {
         SignedIn: true
       }
 
-      this.props.onLoginSucess(vendor) 
-
       this.state.type === "Customer" ? 
       fetch(url+'customer', {
         method: 'POST',
@@ -74,6 +86,7 @@ class Login extends React.Component {
       },
       body: JSON.stringify(customer)
       }).then(response => {
+          this.props.onLoginSucess(customer) 
           this.props.closeModal()
       })
       .catch(error => {
@@ -88,6 +101,7 @@ class Login extends React.Component {
       },
       body: JSON.stringify(vendor)
       }).then(response => {
+          this.props.onLoginSucess(vendor) 
           this.props.closeModal()
       })
       .catch(error => {
@@ -97,6 +111,19 @@ class Login extends React.Component {
 
     render() {
       return (
+        this.props.user.SignedIn ?
+        <View>
+          <Icon.Button
+              name="times" 
+              backgroundColor="white"
+              color="black" 
+              onPress={()=>this.props.closeModal()}
+            />
+          <Text> 
+            You are already loggin in :)
+          </Text>
+        </View>
+        :
         <ScrollView ref='_scrollView'>
             <Icon.Button
               name="times" 
@@ -180,7 +207,7 @@ class Login extends React.Component {
 
 mapStateToProps = state => {
   return {
-    categories: state.categories
+    user: state.user
   }
 }
 

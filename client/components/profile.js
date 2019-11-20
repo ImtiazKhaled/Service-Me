@@ -17,7 +17,6 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props
-    console.log(this.props)
     return (
       <ScrollView>
         {

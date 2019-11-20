@@ -68,4 +68,31 @@ router.post("/", (req, res) => {
     
 })
 
+// add all other users messaged by user
+router.get("add/:SenderId/:ReceiverId", (req, res) => {
+    var SenderId = req.params.SenderId
+    var ReceiverId = req.params.ReceiverId
+    const MAKE_CHAT_ONE = `INSERT INTO MESSAGESBETWEEN VALUES("${SenderId}","${ReceiverId}"`
+    const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}"`
+    console.log(MAKE_CHAT_TWO)
+    connection.query(MAKE_CHAT_ONE, (err, data) => {
+        if(data) {
+            console.log(MAKE_CHAT_ONE)
+        } else {
+            console.log(err)
+        }
+    })
+    connection.query(MAKE_CHAT_TWO, (err, data) => {
+        if(data) {
+            if(data.length)
+                res.send(data)
+            else
+                res.send("There are not messages between the two users")
+        } else {
+            console.log(err)
+        }
+    })
+})
+
+
 module.exports = router

@@ -33,7 +33,7 @@ var initState = {
     ],
     servicers: [],
     user: {
-        UserId: "AC111400",
+        UserId: "",
         SignedIn: false,
         messagers: [],
       }
