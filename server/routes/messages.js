@@ -58,8 +58,8 @@ router.post("/", (req, res) => {
 router.get("/add/:SenderId/:ReceiverId", (req, res) => {
     var SenderId = req.params.SenderId
     var ReceiverId = req.params.ReceiverId
-    const MAKE_CHAT_ONE = `INSERT INTO MESSAGESBETWEEN VALUES("${SenderId}","${ReceiverId})"`
-    const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId})"`
+    const MAKE_CHAT_ONE = `INSERT INTO MESSAGESBETWEEN VALUES("${SenderId}","${ReceiverId}")`
+    const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}")`
     connection.query(MAKE_CHAT_ONE, (err, data) => {
         if(data) {
             console.log(MAKE_CHAT_ONE)

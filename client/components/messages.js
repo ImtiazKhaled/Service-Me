@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { styles } from "../styles/styles"
 import { url } from "../secrets" 
 import Message from "./message"
+import { ScrollView } from "react-native-gesture-handler"
 
 class Messages extends Component {
   constructor(props) {
@@ -61,26 +62,28 @@ class Messages extends Component {
     return (
       <SafeAreaView>
         {
-          this.props.user.SignedIn ? 
-        <View style={styles.topPad}>
-          {
-            
-            messagers.map(
-                (message) => {
-                  return <Message 
-                  key={message.UserId} 
-                  message={message} 
-                  openMessage={this.openMessage}/>
-                }
-            )
-          }
-        </View> :
+        this.props.user.SignedIn ?
+        <ScrollView>
+            <View style={styles.topPad}>
+              {
+                
+                messagers.map(
+                  (message) => {
+                    return <Message 
+                    key={message.UserId} 
+                    message={message} 
+                    openMessage={this.openMessage}/>
+                })
+              }
+            </View>
+        </ScrollView> 
+        :
         <View>
           <Text>
               Please login
             </Text>
-        </View>
-        }
+        </View>      
+      }
       </SafeAreaView>
     )
   }
