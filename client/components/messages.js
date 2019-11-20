@@ -16,23 +16,23 @@ class Messages extends Component {
   
   componentDidMount = () => {
     if(this.props.user.SignedIn) {
-      this.props.user.type === "Customer" ?
-      fetch(url+"messages/customer/"+this.props.user.Email)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          UserId: data[0],
-        })
-      })
-      .catch(err => alert(err)) :
-      fetch(url+"messages/vendor/"+this.props.user.Email)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          UserId: data[0],
-        })
-      })
-      .catch(err => alert(err))    
+      // this.props.user.type === "Customer" ?
+      // fetch(url+"messages/customer/"+this.props.user.Email)
+      // .then(response => response.json())
+      // .then(data => {
+      //   this.setState({
+      //     UserId: data[0],
+      //   })
+      // })
+      // .catch(err => alert(err)) :
+      // fetch(url+"messages/vendor/"+this.props.user.Email)
+      // .then(response => response.json())
+      // .then(data => {
+      //   this.setState({
+      //     UserId: data[0],
+      //   })
+      // })
+      // .catch(err => alert(err))    
       fetch(url+"messages/"+this.state.UserId)
       .then(response => response.json())
       .then(data => {
