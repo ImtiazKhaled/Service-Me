@@ -5,11 +5,11 @@ const connection = config.connection
 // get all other users messaged by user
 router.get("/:id", (req, res) => {
     var id = req.params.id
-    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee=UserId WHERE Messager="${id}"`
+    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee=UserId WHERE Messagee="${id}"`
     console.log(GET_MESSAGES_BETWEEN)
     connection.query(GET_MESSAGES_BETWEEN, (err, data) => {
         if(data) {
-            if(data.length)
+            if(data.length>0)
                 res.send(data)
             else
                 res.send("That user does not have any messages")

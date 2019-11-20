@@ -47,6 +47,7 @@ class Profile extends Component {
             <Text>
               {user.rate}
             </Text>
+            <Button title="LogOut" onPress={()=>{this.props.logout()}} />
           </View> :
           <View>
             <Text>
@@ -67,4 +68,10 @@ const mapStateToProps = (state) => {
   }
 } 
 
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch({type:'LOG_OUT'})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

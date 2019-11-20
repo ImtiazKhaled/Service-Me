@@ -10,24 +10,20 @@ import Icon from "react-native-vector-icons/FontAwesome"
 class Chat extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-          chat:[],
-          message: '',
-          messagee: '',
-          messager: '',
-        }
-    }
-
-    componentWillMount = () => {
         let Messagee = JSON.stringify(this.props.navigation.getParam("Messagee"))
         Messagee = Messagee.substring(1, Messagee.length - 1)
         let Messager = JSON.stringify(this.props.navigation.getParam("Messager"))
         Messager = Messager.substring(1, Messager.length - 1)
-        this.setState({
+        this.state = {
+            chat:[],
+            message: '',
             messagee: Messagee,
-            messager: Messager
-        })        
-        fetch(url+"messages/"+Messagee+"/"+Messager)
+            messager: Messager,
+        }
+    }
+    
+    componentWillMount = () => {
+        fetch(url+"messages/"+this.state.messagee+"/"+this.state.messager)
         .then(response => response.json())
         .then(data => {
             this.setState({
@@ -54,7 +50,7 @@ class Chat extends Component {
             fetch(url+"messages/add/"+this.state.messagee+"/"+this.state.messager)
             .then(response => {
                     fetch(url+"messages/"+this.state.messagee+"/"+this.state.messager)
-                    .then(response => response.json())
+                    .then(response => response.json(messageStart))
                     .then(data => {
                         this.setState({
                             chat: data,

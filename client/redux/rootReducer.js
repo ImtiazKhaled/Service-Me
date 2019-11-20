@@ -59,6 +59,16 @@ const RootReducer = (state = initState, action) => {
                 user: action.user
             }
             return state
+        case "LOG_OUT":
+            const logOut = {        
+                UserId: "",
+                SignedIn: false,
+                messagers: [],
+            }
+            state = {
+                ...state,
+                user: logOut
+            }
         default:
             return state
     }

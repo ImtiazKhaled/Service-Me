@@ -10,11 +10,11 @@ class Messages extends Component {
     super(props)
     this.state = {
       messagers:[],
-      UserId: "",
+      ...props.user
     }
   }
   
-  componentWillMount = () => {
+  componentDidMount = () => {
     if(this.props.user.SignedIn) {
       this.props.user.type === "Customer" ?
       fetch(url+"messages/customer/"+this.props.user.Email)
@@ -32,12 +32,11 @@ class Messages extends Component {
           UserId: data[0],
         })
       })
-      .catch(err => alert(err))
-  
-      
+      .catch(err => alert(err))    
       fetch(url+"messages/"+this.state.UserId)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         this.setState({
           messagers: data,
         })
@@ -58,6 +57,7 @@ class Messages extends Component {
 
   render() {
     const { messagers } = this.state
+    
     return (
       <SafeAreaView>
         {
