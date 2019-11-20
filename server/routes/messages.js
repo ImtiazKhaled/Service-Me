@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 router.get("/:SenderId/:ReceiverId", (req, res) => {
     var SenderId = req.params.SenderId
     var ReceiverId = req.params.ReceiverId
-    const GET_CHAT = `SELECT * FROM MESSAGES WHERE (Sender="${SenderId}" AND Receiver="${ReceiverId}") OR (Receiver="${ReceiverId}" AND Sender="${SenderId}") ORDER BY SendAt ASC`
+    const GET_CHAT = `SELECT * FROM MESSAGES WHERE (Sender="${SenderId}" AND Receiver="${ReceiverId}") OR (Receiver="${SenderId}" AND Sender="${ReceiverId}") ORDER BY SendAt ASC`
     console.log(GET_CHAT)
     connection.query(GET_CHAT, (err, data) => {
         if(data) {
@@ -55,12 +55,11 @@ router.post("/", (req, res) => {
 })
 
 // add all other users messaged by user
-router.get("add/:SenderId/:ReceiverId", (req, res) => {
+router.get("/add/:SenderId/:ReceiverId", (req, res) => {
     var SenderId = req.params.SenderId
     var ReceiverId = req.params.ReceiverId
     const MAKE_CHAT_ONE = `INSERT INTO MESSAGESBETWEEN VALUES("${SenderId}","${ReceiverId}"`
     const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}"`
-    console.log(MAKE_CHAT_TWO)
     connection.query(MAKE_CHAT_ONE, (err, data) => {
         if(data) {
             console.log(MAKE_CHAT_ONE)
@@ -70,10 +69,7 @@ router.get("add/:SenderId/:ReceiverId", (req, res) => {
     })
     connection.query(MAKE_CHAT_TWO, (err, data) => {
         if(data) {
-            if(data.length)
-                res.send(data)
-            else
-                res.send("There are not messages between the two users")
+            console.log(MAKE_CHAT_TWO)
         } else {
             console.log(err)
         }

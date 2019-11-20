@@ -40,7 +40,8 @@ class Chat extends Component {
             MessageText: this.state.message,
         }
 
-        if(this.state.chat.length === 0)    {
+        console.log(this.state.chat.length)
+        if(this.state.chat.length == 0)    {
             const messageStart = {
                 Sender: this.state.messager,
                 Receiver: this.state.messagee,        
