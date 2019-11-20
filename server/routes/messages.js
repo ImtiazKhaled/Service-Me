@@ -5,7 +5,7 @@ const connection = config.connection
 // get all other users messaged by user
 router.get("/:id", (req, res) => {
     var id = req.params.id
-    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee="${id}"`
+    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee="${id} OR Messager="${id}"`
     console.log(GET_MESSAGES_BETWEEN)
     connection.query(GET_MESSAGES_BETWEEN, (err, data) => {
         if(data) {
@@ -59,7 +59,7 @@ router.get("/add/:SenderId/:ReceiverId", (req, res) => {
     var SenderId = req.params.SenderId
     var ReceiverId = req.params.ReceiverId
     const MAKE_CHAT_ONE = `INSERT INTO MESSAGESBETWEEN VALUES("${SenderId}","${ReceiverId}")`
-    const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}")`
+    // const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}")`
     connection.query(MAKE_CHAT_ONE, (err, data) => {
         if(data) {
             console.log(MAKE_CHAT_ONE)
