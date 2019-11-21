@@ -3,12 +3,21 @@ import { TouchableOpacity } from "react-native"
 import { SearchBar, Avatar } from "react-native-elements"
 import { styles } from "../styles/styles"
 import { Col, Grid } from "react-native-easy-grid"
+import { connect } from "react-redux"
 
-export default class HomeTopBar extends React.Component {
-    state = {
-        search: "",
+class HomeTopBar extends React.Component {
+    constructor(props) {
+        super(props)
+        props.user.SignedIn ?
+        this.state = {
+            ProfilePicture: props.user.ProfilePicture,
+            search: "",
+        } : this.state = {
+            ProfilePicture: "https://www.macmillandictionary.com/external/slideshow/full/Grey_full.png",
+            search: "",
+        }
     }
-
+    
     updateSearch = search => {
         this.setState({ search })
     }
@@ -22,10 +31,7 @@ export default class HomeTopBar extends React.Component {
                     <TouchableOpacity onPress={this.props.signIn}>
                         <Avatar
                             rounded
-                            source={{
-                                uri:
-                                    "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
-                            }}
+                            source={{ uri: this.state.ProfilePicture }}
                         />
                     </TouchableOpacity>
                 </Col>
@@ -44,3 +50,11 @@ export default class HomeTopBar extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(HomeTopBar)

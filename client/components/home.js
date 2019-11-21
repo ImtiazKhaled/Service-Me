@@ -11,7 +11,6 @@ import HomeTopBar from "./homeTopBar"
 import Servicer from "./servicer"
 
 
-
 class Home extends Component {
   constructor(props) {
     super(props)

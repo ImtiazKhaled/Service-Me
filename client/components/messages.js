@@ -15,8 +15,9 @@ class Messages extends Component {
     }
   }
   
-  componentWillMount = () => {
-    if(this.props.user.SignedIn) {    
+  componentDidMount = () => {
+    if(this.props.user.SignedIn) {   
+      console.log(url+"messages/"+this.state.UserId) 
       fetch(url+"messages/"+this.state.UserId)
       .then(response => response.json())
       .then(data => {
@@ -41,7 +42,7 @@ class Messages extends Component {
 
   render() {
     const { messagers } = this.state
-    
+    // console.log('this is props', this.props)  
     return (
       <SafeAreaView>
         {
@@ -53,7 +54,7 @@ class Messages extends Component {
                 messagers.map(
                   (message) => {
                     return <Message 
-                    key={message.UserId} 
+                    key={message.Messager} 
                     message={message} 
                     openMessage={this.openMessage}/>
                 })

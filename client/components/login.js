@@ -34,18 +34,19 @@ class Login extends React.Component {
           fetch(url+"customer/"+this.state.email)
           .then(response => response.json())
           .then(data => {
-            if(data != "That user does not exist"){
+            if(data.res && data.res === "empty"){
+              this.refs._scrollView.scrollTo({ y:200, animated: true })
+              return
+            } else {
               check = data 
               const customer = {...data, SignedIn: true}
               this.props.onLoginSucess(customer) 
               this.props.closeModal()    
-            } else {
-              return
             }
           })
-
-
-          this.refs._scrollView.scrollTo({ y:200, animated: true })
+          .catch(error => {
+            console.log(error)
+          })
           } else {
                 console.log("Sign-in Failed")
               }
@@ -86,9 +87,16 @@ class Login extends React.Component {
       },
       body: JSON.stringify(customer)
       }).then(response => {
-          this.props.onLoginSucess(customer) 
-          this.props.closeModal()
-      })
+        fetch(url+"customer/"+this.state.email)
+        .then(response => response.json())
+        .then(data => {
+          this.props.onLoginSucess({...data, SignedIn: true}) 
+          this.props.closeModal()  
+        })
+        .catch(error => {
+          console.log(error)
+        })  
+        })
       .catch(error => {
           console.log(error)
       })
@@ -101,8 +109,15 @@ class Login extends React.Component {
       },
       body: JSON.stringify(vendor)
       }).then(response => {
-          this.props.onLoginSucess(vendor) 
-          this.props.closeModal()
+        fetch(url+"vendor/"+this.state.email)
+        .then(response => response.json())
+        .then(data => {
+          this.props.onLoginSucess({...data, SignedIn: true}) 
+          this.props.closeModal()  
+        })
+        .catch(error => {
+          console.log(error)
+        })
       })
       .catch(error => {
           console.log(error)

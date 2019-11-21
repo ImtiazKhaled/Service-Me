@@ -1,8 +1,9 @@
 import React, { Component } from "react"
-import { Text, ScrollView, TouchableOpacity } from "react-native"
+import { Text, ScrollView, TouchableOpacity, Image } from "react-native"
 import { Card } from "react-native-elements"
 import { styles } from "../styles/styles"
 import { connect } from "react-redux"
+
 
 class PopularItems extends Component {
 
@@ -21,7 +22,8 @@ class PopularItems extends Component {
                     <TouchableOpacity key={type.id} onPress={() => this.navigateToServicer(type)}>
                         <Card
                             containerStyle={styles.itemCards}>
-                            <Text>
+                            <Image style={styles.itemImage} source={type.image} />
+                            <Text style={styles.itemText}>
                                 {type.id}
                             </Text>
                         </Card>

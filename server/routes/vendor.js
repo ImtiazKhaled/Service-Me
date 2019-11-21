@@ -2,10 +2,10 @@ const router = require("express").Router()
 const config = require("../connection")
 const connection = config.connection
 
-// get vendor by id
-router.get("/:id", (req, res) => {
-    var id = req.params.id
-    const GET_VENDOR = `SELECT * FROM SMUSER NATURAL JOIN VENDOR WHERE UserId="${id}"`
+// get vendor by email
+router.get("/:email", (req, res) => {
+    var email = req.params.email
+    const GET_VENDOR = `SELECT * FROM SMUSER NATURAL JOIN VENDOR WHERE Email="${email}"`
     console.log(GET_VENDOR)
     connection.query(GET_VENDOR, (err, data) => {
         if(data) {

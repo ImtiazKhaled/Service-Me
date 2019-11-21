@@ -5,6 +5,7 @@ import { Col, Grid } from "react-native-easy-grid"
 import { styles, SH } from "../styles/styles"
 import { url } from "../secrets"
 import { CardThree } from "react-native-card-ui"
+import { connect } from "react-redux"
 import Icon from "react-native-vector-icons/FontAwesome"
 
 class Chat extends Component {
@@ -23,14 +24,22 @@ class Chat extends Component {
     }
     
     componentWillMount = () => {
-        fetch(url+"messages/"+this.state.messagee+"/"+this.state.messager)
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                chat: data,
+        if(this.props.user.SignedIn) {
+            fetch(url+"messages/"+this.state.messagee+"/"+this.state.messager)
+            .then(response => response.json())
+            .then(data => {
+                if(data.res && data.res === "empty") {
+                    return
+                } else {
+                    this.setState({
+                        chat: data,
+                    })
+                }
             })
-        })
-        .catch(err => alert(err))
+            .catch(err => alert(err))
+        } else {
+            return
+        }
     }
 
     sendMessage = () => {
@@ -40,7 +49,6 @@ class Chat extends Component {
             MessageText: this.state.message,
         }
 
-        console.log(this.state.chat.length)
         if(this.state.chat.length == 0)    {
             const messageStart = {
                 Sender: this.state.messager,
@@ -142,5 +150,10 @@ class Chat extends Component {
     }
 }
 
+mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
 
-export default Chat
+export default connect(mapStateToProps)(Chat)

@@ -18,6 +18,16 @@ export const styles = StyleSheet.create({
     width: SW * 0.40,
     height: SH * 0.15,
     borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  itemImage: {
+    width: SW * 0.40,
+    height: SH * 0.10,
+    resizeMode: 'contain',
+  },
+  itemText: {
+    paddingLeft: SH * 0.05,
   },
   favServicerCardImage: {
     width: SW * 0.55,
