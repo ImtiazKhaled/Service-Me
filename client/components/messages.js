@@ -15,16 +15,20 @@ class Messages extends Component {
     }
   }
   
-  componentDidMount = () => {
+  componentDidUpdate = () => {
     if(this.props.user.SignedIn) {   
-      console.log(url+"messages/"+this.state.UserId) 
-      fetch(url+"messages/"+this.state.UserId)
+      console.log(url+"messages/"+this.props.user.UserId) 
+      fetch(url+"messages/"+this.props.user.UserId)
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        this.setState({
-          messagers: data,
-        })
+        if(data.res && data.res === "empty") {
+          return
+        } else{
+          this.setState({
+            messagers: data,
+          })
+        }
       })
       .catch(err => alert(err))   
     } else {
@@ -42,7 +46,8 @@ class Messages extends Component {
 
   render() {
     const { messagers } = this.state
-    // console.log('this is props', this.props)  
+    console.log('this is props', this.props)  
+    console.log('this is state', this.state)  
     return (
       <SafeAreaView>
         {
@@ -50,11 +55,10 @@ class Messages extends Component {
         <ScrollView>
             <View style={styles.topPad}>
               {
-                
                 messagers.map(
                   (message) => {
                     return <Message 
-                    key={message.Messager} 
+                    key={message.UserId} 
                     message={message} 
                     openMessage={this.openMessage}/>
                 })

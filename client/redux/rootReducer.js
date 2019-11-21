@@ -43,14 +43,7 @@ var initState = {
     ],
     servicers: [],
     user: {
-        "CreatedAt": "2019-10-21T00:00:00.000Z",
-        "Email": "imtiazkhaled07@gmail.com",
-        "FName": "Imtiaz",
-        "LName": "Khaled",
-        "Phone": "2149371483",
-        "ProfilePicture": "https://lh4.googleusercontent.com/-uI4AB38X3tU/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfgxoB52smiLmccLVajVadx1w106w/photo.jpg",
-        "SignedIn": true,
-        "UserId": "IK112186",
+        "SignedIn": false,
         messagers: [],
     }
 }
