@@ -31,22 +31,41 @@ class Login extends React.Component {
               ...user,
               signedIn: true
           })
-          fetch(url+"customer/"+this.state.email)
-          .then(response => response.json())
-          .then(data => {
-            if(data.res && data.res === "empty"){
-              this.refs._scrollView.scrollTo({ y:200, animated: true })
-              return
+            if(this.state.type==="Customer") {
+              fetch(url+"customer/"+this.state.email)
+              .then(response => response.json())
+              .then(data => {
+                if(data.res && data.res === "empty"){
+                  this.refs._scrollView.scrollTo({ y:200, animated: true })
+                  return
+                } else {
+                  check = data 
+                  const customer = {...data, SignedIn: true}
+                  this.props.onLoginSucess(customer) 
+                  this.props.closeModal()    
+                }
+              })
+              .catch(error => {
+                console.log(error)
+              })  
             } else {
-              check = data 
-              const customer = {...data, SignedIn: true}
-              this.props.onLoginSucess(customer) 
-              this.props.closeModal()    
+              fetch(url+"vendor/"+this.state.email)
+              .then(response => response.json())
+              .then(data => {
+                if(data.res && data.res === "empty"){
+                  this.refs._scrollView.scrollTo({ y:200, animated: true })
+                  return
+                } else {
+                  check = data 
+                  const customer = {...data, SignedIn: true}
+                  this.props.onLoginSucess(customer) 
+                  this.props.closeModal()    
+                }
+              })
+              .catch(error => {
+                console.log(error)
+              })
             }
-          })
-          .catch(error => {
-            console.log(error)
-          })
           } else {
                 console.log("Sign-in Failed")
               }
@@ -146,7 +165,7 @@ class Login extends React.Component {
               color="black" 
               onPress={()=>this.props.closeModal()}
             />
-            <View style={{...styles.container, height: SH*0.45, width: SW*0.65}}>
+            <View style={{...styles.container, height: SH*0.35, width: SW*0.65}}>
               <SocialIcon
                   title="Sign in with Google"
                   button

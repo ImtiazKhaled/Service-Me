@@ -30,7 +30,7 @@ class ShowOrder extends Component {
                     Total Charge: {order.TotalCost}
                 </Text>
                 <Text>
-                    Total Charge: {order.Status}
+                    Order Status: {order.OrderStatus}
                 </Text>
             </Card>
         )

@@ -12,7 +12,7 @@ router.get("/:email", (req, res) => {
             if(data.length)
                 res.send(data[0])
             else
-                res.send({res:"That user does not exist"})
+                res.send({res:"empty"})
         } else {
             console.log(err)
         }

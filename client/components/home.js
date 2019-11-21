@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Button, SafeAreaView } from "react-native"
+import { View, Text, ScrollView, SafeAreaView } from "react-native"
 import { Overlay } from "react-native-elements"
 import { styles, SH, SW } from "../styles/styles"
 import { connect } from "react-redux"

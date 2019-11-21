@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import { styles } from "../styles/styles"
 import ShowOrder from "./showOrder"
 import { url } from "../secrets"
-
+import { Col, Grid } from "react-native-easy-grid"
 
 class Profile extends Component {
   constructor(props) {
@@ -58,18 +58,21 @@ class Profile extends Component {
               {user.Type}
             </Text>
             <Text>
-              {user.serviceType}
+              {user.serviceType}type
             </Text>
             <Text>
               {user.rate}
             </Text>
             <Button title="LogOut" onPress={()=>{this.props.logout()}} />
             <Text> Past Orders </Text>
-            {
-              this.state.orders && this.state.orders.map( order =>
-                <ShowOrder key={order.OrderId} order={order}/>  
-              )
-            }
+              <Grid>
+              {
+                this.state.orders && this.state.orders.map( order =>
+                  <Col size={50} key={order.OrderId}>
+                    <ShowOrder order={order}/>  
+                  </Col>
+              )}
+              </Grid>
           </View> :
           <View>
             <Text>
