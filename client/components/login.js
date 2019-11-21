@@ -40,7 +40,7 @@ class Login extends React.Component {
                   return
                 } else {
                   check = data 
-                  const customer = {...data, SignedIn: true}
+                  const customer = {...data, type: "Customer", SignedIn: true}
                   this.props.onLoginSucess(customer) 
                   this.props.closeModal()    
                 }
@@ -57,7 +57,7 @@ class Login extends React.Component {
                   return
                 } else {
                   check = data 
-                  const customer = {...data, SignedIn: true}
+                  const customer = {...data, type: "Vendor", SignedIn: true}
                   this.props.onLoginSucess(customer) 
                   this.props.closeModal()    
                 }
@@ -109,7 +109,7 @@ class Login extends React.Component {
         fetch(url+"customer/"+this.state.email)
         .then(response => response.json())
         .then(data => {
-          this.props.onLoginSucess({...data, SignedIn: true}) 
+          this.props.onLoginSucess({...data,type: "Customer", SignedIn: true}) 
           this.props.closeModal()  
         })
         .catch(error => {
@@ -131,7 +131,7 @@ class Login extends React.Component {
         fetch(url+"vendor/"+this.state.email)
         .then(response => response.json())
         .then(data => {
-          this.props.onLoginSucess({...data, SignedIn: true}) 
+          this.props.onLoginSucess({...data, type: "Vendor", SignedIn: true}) 
           this.props.closeModal()  
         })
         .catch(error => {

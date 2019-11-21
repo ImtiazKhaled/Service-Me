@@ -18,18 +18,32 @@ class Profile extends Component {
   }
 
   componentDidUpdate = () => {
-    fetch(url+"appointment/customer/"+this.props.user.Email)
-    .then(response => response.json())
-    .then(data => {
-        if(data.res && data.res === "empty") {
-            return
-        } else {
-            this.setState({
-                orders: data,
-            })
-        }
-    })
-    .catch(err => alert(err))
+    if(this.props.user.type === "Customer") {
+      fetch(url+"appointment/customer/"+this.props.user.Email)
+      .then(response => response.json())
+      .then(data => {
+          if(data.res && data.res === "empty") {
+              return
+          } else {
+              this.setState({
+                  orders: data,
+              })
+          }
+      })
+      .catch(err => alert(err))
+    } else {
+      fetch(url+"appointment/vendor/"+this.props.user.UserId)
+      .then(data => {
+          if(data.res && data.res === "empty") {
+              return
+          } else {
+              this.setState({
+                  orders: data,
+              })
+          }
+      })
+      .catch(err => alert(err))  
+    }
   }
 
   render() {
@@ -56,10 +70,10 @@ class Profile extends Component {
               {user.phone}
             </Text>
             <Text>
-              {user.Type}
+              {user.type}
             </Text>
             <Text>
-              {user.serviceType}type
+              {user.serviceType}
             </Text>
             <Text>
               {user.rate}
@@ -86,6 +100,7 @@ class Profile extends Component {
 
 
 const mapStateToProps = (state) => {  
+  console.log(state.user)
   return {
     user: state.user
   }

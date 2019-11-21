@@ -4,7 +4,7 @@ const config = require("../connection")
 const connection = config.connection
 
 
-// get all other users messaged by user
+// get all the orders the requested by the customer
 router.get("/customer/:email", (req, res) => {
     var email = req.params.email
     const GET_ALL_ORDERS = `SELECT * FROM GENERATEDORDER WHERE CustomerEmail="${email}"`
@@ -21,6 +21,25 @@ router.get("/customer/:email", (req, res) => {
         }
     })
 })
+
+// get all orders requested to the vendor
+router.get("/vendor/:id", (req, res) => {
+    var id = req.params.id
+    const GET_ALL_ORDERS = `SELECT * FROM GENERATEDORDER WHERE VendorId="${id}"`
+    console.log(GET_ALL_ORDERS)
+    connection.query(GET_ALL_ORDERS, (err, data) => {
+        if(data) {
+            if(data.length>0) {
+                res.send(data)
+            } else {
+                res.send({res:"empty"})
+            }
+        } else {
+            console.log(err)
+        }
+    })
+})
+
 
 
 // add a new order
