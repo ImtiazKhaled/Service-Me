@@ -9,7 +9,7 @@ router.get("/:id", (req, res) => {
     console.log(GET_USERNAME)
     connection.query(GET_USERNAME, (err, data) => {
         if(data) {
-            res.send(data)
+            res.send(data[0])
         } else {
             console.log(err)
         }

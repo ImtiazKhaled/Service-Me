@@ -5,17 +5,16 @@ const connection = config.connection
 // get all other users messaged by user
 router.get("/:id", (req, res) => {
     var id = req.params.id
-    const res = []
-    const GET_MESSAGES_BETWEEN_ONE = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messager!=UserId WHERE UserId="${id}" AND UserId=Messagee`
-    const GET_MESSAGES_BETWEEN_TWO = `SELCET * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee!=UserId WHERE UserId="${id}" AND UserId=Messager`
-    console.log(GET_MESSAGES_BETWEEN_ONE)
-    console.log(GET_MESSAGES_BETWEEN_TWO)
+    const retObj = []
+    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN, SMUSER WHERE Messagee=UserId AND Messager="${id}"`
+    console.log(GET_MESSAGES_BETWEEN)
     connection.query(GET_MESSAGES_BETWEEN, (err, data) => {
         if(data) {
-            if(data.length>0)
-                res = data
-            else
+            if(data.length>0) {
+                res.send(data)
+            } else {
                 res.send({res:"empty"})
+            }
         } else {
             console.log(err)
         }
@@ -57,15 +56,22 @@ router.post("/", (req, res) => {
     
 })
 
-// add all other users messaged by user
+// adds to messages between if this is their first time talking
 router.get("/add/:SenderId/:ReceiverId", (req, res) => {
     var SenderId = req.params.SenderId
     var ReceiverId = req.params.ReceiverId
     const MAKE_CHAT_ONE = `INSERT INTO MESSAGESBETWEEN VALUES("${SenderId}","${ReceiverId}")`
-    // const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}")`
+    const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}")`
     connection.query(MAKE_CHAT_ONE, (err, data) => {
         if(data) {
-	    console.log(MAKE_CHAT_ONE)
+	        console.log(MAKE_CHAT_ONE)
+        } else {
+            console.log(err)
+        }
+    })
+    connection.query(MAKE_CHAT_TWO, (err, data) => {
+        if(data) {
+	        console.log(MAKE_CHAT_TWO)
             res.send("success")
         } else {
             console.log(err)
