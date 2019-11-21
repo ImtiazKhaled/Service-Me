@@ -52,7 +52,7 @@ class AppointmentForm extends React.Component {
             EstimatedTime: this.state.estimatedTime,
             TotalCost: this.state.totalCost,
             ServiceDate: this.state.serviceDate,
-            ServiceType: this.state.vendor.type,
+            ServiceType: this.state.vendor.ServiceOffered,
             ServicerName: this.state.vendor.FName + " " + this.state.vendor.LName
         } : {
             CustomerFName: this.state.customerFName,
@@ -63,7 +63,7 @@ class AppointmentForm extends React.Component {
             EstimatedTime: this.state.estimatedTime,
             TotalCost: this.state.totalCost,
             ServiceDate: this.state.serviceDate,
-            ServiceType: this.state.vendor.type,
+            ServiceType: this.state.vendor.ServiceOffered,
             ServicerName: this.state.vendor.FName + " " + this.state.vendor.LName
         }
 

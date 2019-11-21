@@ -67,7 +67,7 @@ class Profile extends Component {
             <Text> Past Orders </Text>
             {
               this.state.orders && this.state.orders.map( order =>
-                <ShowOrder order={order}/>  
+                <ShowOrder key={order.OrderId} order={order}/>  
               )
             }
           </View> :

@@ -25,8 +25,8 @@ router.get("/customer/:email", (req, res) => {
 
 // add a new order
 router.post("/", (req, res) => {
-    var OrderId =  req.body.CustomerFName[0] + req.body.CustomerLName[0] + req.body.VendorId + req.body.ServiceDate.getTime()
-    const ADD_ORDER = `INSERT INTO GENERATEDORDER VALUES("${OrderId}","${req.body.CustomerFName}","${req.body.CustomerLName}","${req.body.CustomerEmail}","${req.body.CustomerPhone}","${req.body.VendorId}","${req.body.EstimatedTime}","${req.body.TotalCost}","Pending","${req.body.ServiceDate}","${req.body.ServiceType}",${null})`
+    var OrderId =  req.body.CustomerFName[0] + req.body.CustomerLName[0] + req.body.VendorId + req.body.ServiceDate
+    const ADD_ORDER = `INSERT INTO GENERATEDORDER VALUES("${OrderId}","${req.body.CustomerFName}","${req.body.CustomerLName}","${req.body.CustomerEmail}","${req.body.CustomerPhone}","${req.body.VendorId}","${req.body.EstimatedTime}","${req.body.TotalCost}","Pending","${req.body.ServiceDate}","${req.body.ServiceType}","${req.body.ServicerName}",${null})`
     connection.query(ADD_ORDER, (err, data) => {
         if(data) {
             console.log(ADD_ORDER)
