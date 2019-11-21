@@ -38,6 +38,7 @@ router.get("/vendor/:id", (req, res) => {
             console.log(err)
         }
     })
+    res.send({status: "success"})
 })
 
 

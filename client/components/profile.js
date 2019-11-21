@@ -33,6 +33,7 @@ class Profile extends Component {
       .catch(err => alert(err))
     } else {
       fetch(url+"appointment/vendor/"+this.props.user.UserId)
+      .then(response => response.json())
       .then(data => {
           if(data.res && data.res === "empty") {
               return
@@ -100,7 +101,6 @@ class Profile extends Component {
 
 
 const mapStateToProps = (state) => {  
-  console.log(state.user)
   return {
     user: state.user
   }
