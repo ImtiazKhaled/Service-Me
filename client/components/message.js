@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity, Button } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { CardThree } from "react-native-card-ui"
 
 export default class Message extends Component {

@@ -1,7 +1,6 @@
 import React from "react"
 import { TabBar } from "react-native-animated-nav-tab-bar"
 import Icon from "react-native-vector-icons/Feather"
-import Profile from "../components/profile"
 import { createAppContainer } from "react-navigation"
 import { createBottomTabNavigator } from "react-navigation-tabs"
 import HomeNav from "./homeNavigator"

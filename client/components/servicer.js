@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import { View, Text, ScrollView } from "react-native"
 import { Avatar, Button } from "react-native-elements"
-import { CardFive } from "react-native-card-ui"
-import { url } from "../secrets"
 import { Col, Grid } from "react-native-easy-grid"
 import { styles, SH, SW } from "../styles/styles"
 import { connect } from "react-redux"

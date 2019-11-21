@@ -3,8 +3,6 @@ import { ScrollView, View, Text } from "react-native"
 import { Avatar, Button } from "react-native-elements"
 import { connect } from "react-redux"
 import { styles } from "../styles/styles"
-import { url } from "../secrets"
-import { Col, Grid } from "react-native-easy-grid"
 
 
 class Profile extends Component {
