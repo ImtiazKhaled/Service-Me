@@ -46,8 +46,6 @@ class Messages extends Component {
 
   render() {
     const { messagers } = this.state
-    console.log('this is props', this.props)  
-    console.log('this is state', this.state)  
     return (
       <SafeAreaView>
         {

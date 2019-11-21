@@ -19,6 +19,23 @@ router.get("/:email", (req, res) => {
     })
 })
 
+// get vendor by id
+router.get("/id/:id", (req, res) => {
+    var id = req.params.id
+    const GET_VENDOR = `SELECT * FROM SMUSER NATURAL JOIN VENDOR WHERE UserId="${id}"`
+    console.log(GET_VENDOR)
+    connection.query(GET_VENDOR, (err, data) => {
+        if(data) {
+            if(data.length)
+                res.send(data[0])
+            else
+                res.send({res:"That user does not exist"})
+        } else {
+            console.log(err)
+        }
+    })
+})
+
 // add a new vendor
 router.post("/", (req, res) => {
     

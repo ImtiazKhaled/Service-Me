@@ -66,7 +66,15 @@ class Servicer extends Component {
               }
             </Col>
             <Col size={40}>
-              <Button title="Set Appointment" />
+              <Button 
+                title="Set Appointment" 
+                onPress={()=>{
+                  const VendorId = {
+                    VendorId: vendor.UserId,
+                  }
+                  this.props.navigation.navigate("AppointmentForm", VendorId)
+                  this.props.closeModal()  
+                }}/>
             </Col>
           </Grid>
         </View>
