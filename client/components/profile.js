@@ -42,7 +42,6 @@ class Profile extends Component {
                   orders: data,
               })
           }
-          console.log(data)
       })
       .catch(err => alert(err))  
     } else {
@@ -84,14 +83,10 @@ class Profile extends Component {
             </Text>
             <Button title="LogOut" onPress={()=>{this.props.logout()}} />
             <Text> Past Orders </Text>
-              <Grid>
-              {
-                this.state.orders && this.state.orders.map( order =>
-                  <Col size={50} key={order.OrderId}>
-                    <ShowOrder order={order}/>  
-                  </Col>
-              )}
-              </Grid>
+            {
+              this.state.orders && this.state.orders.map( order =>
+                  <ShowOrder order={order}/>  
+            )}
           </View> :
           <PleaseLogin />
         }

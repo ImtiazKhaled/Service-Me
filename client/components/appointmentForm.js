@@ -76,7 +76,7 @@ class AppointmentForm extends React.Component {
         },
         body: JSON.stringify(order)
         }).then(response => {
-            
+            this.props.navigation.goBack()
         })
         .catch(error => {
             console.log(error)
