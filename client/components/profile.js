@@ -3,14 +3,32 @@ import { ScrollView, View, Text } from "react-native"
 import { Avatar, Button } from "react-native-elements"
 import { connect } from "react-redux"
 import { styles } from "../styles/styles"
+import ShowOrder from "./showOrder"
+import { url } from "../secrets"
 
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {}
+      user: {},
+      orders: []
     }
+  }
+
+  componentDidUpdate = () => {
+    fetch(url+"appointment/customer/"+this.props.user.Email)
+    .then(response => response.json())
+    .then(data => {
+        if(data.res && data.res === "empty") {
+            return
+        } else {
+            this.setState({
+                orders: data,
+            })
+        }
+    })
+    .catch(err => alert(err))
   }
 
   render() {
@@ -46,6 +64,12 @@ class Profile extends Component {
               {user.rate}
             </Text>
             <Button title="LogOut" onPress={()=>{this.props.logout()}} />
+            <Text> Past Orders </Text>
+            {
+              this.state.orders && this.state.orders.map( order =>
+                <ShowOrder order={order}/>  
+              )
+            }
           </View> :
           <View>
             <Text>
@@ -53,6 +77,7 @@ class Profile extends Component {
             </Text>
           </View>
         }
+        
         
       </ScrollView>
     )

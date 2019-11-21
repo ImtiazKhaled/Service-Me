@@ -5,12 +5,11 @@ const connection = config.connection
 
 
 // get all other users messaged by user
-router.get("/:id", (req, res) => {
-    var id = req.params.id
-    const retObj = []
-    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN, SMUSER WHERE Messagee=UserId AND Messager="${id}"`
-    console.log(GET_MESSAGES_BETWEEN)
-    connection.query(GET_MESSAGES_BETWEEN, (err, data) => {
+router.get("/customer/:email", (req, res) => {
+    var email = req.params.email
+    const GET_ALL_ORDERS = `SELECT * FROM GENERATEDORDER WHERE CustomerEmail="${email}"`
+    console.log(GET_ALL_ORDERS)
+    connection.query(GET_ALL_ORDERS, (err, data) => {
         if(data) {
             if(data.length>0) {
                 res.send(data)
@@ -27,7 +26,7 @@ router.get("/:id", (req, res) => {
 // add a new order
 router.post("/", (req, res) => {
     var OrderId =  req.body.CustomerFName[0] + req.body.CustomerLName[0] + req.body.VendorId + req.body.ServiceDate.getTime()
-    const ADD_ORDER = `INSERT INTO GENERATEDORDER VALUES("${OrderId}","${req.body.CustomerFName}","${req.body.CustomerLName}","${req.body.CustomerEmail}","${req.body.CustomerPhone}","${req.body.VendorId}","${req.body.EstimatedTime}","${req.body.TotalCost}","Pending","${req.body.ServiceDate}",${null})`
+    const ADD_ORDER = `INSERT INTO GENERATEDORDER VALUES("${OrderId}","${req.body.CustomerFName}","${req.body.CustomerLName}","${req.body.CustomerEmail}","${req.body.CustomerPhone}","${req.body.VendorId}","${req.body.EstimatedTime}","${req.body.TotalCost}","Pending","${req.body.ServiceDate}","${req.body.ServiceType}",${null})`
     connection.query(ADD_ORDER, (err, data) => {
         if(data) {
             console.log(ADD_ORDER)
