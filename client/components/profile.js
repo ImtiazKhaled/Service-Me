@@ -6,6 +6,7 @@ import { styles } from "../styles/styles"
 import ShowOrder from "./showOrder"
 import { url } from "../secrets"
 import { Col, Grid } from "react-native-easy-grid"
+import PleaseLogin from "./pleaseLogin"
 
 class Profile extends Component {
   constructor(props) {
@@ -74,11 +75,7 @@ class Profile extends Component {
               )}
               </Grid>
           </View> :
-          <View>
-            <Text>
-              Please login
-            </Text>
-          </View>
+          <PleaseLogin />
         }
         
         

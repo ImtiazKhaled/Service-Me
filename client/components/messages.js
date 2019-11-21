@@ -5,6 +5,8 @@ import { styles } from "../styles/styles"
 import { url } from "../secrets" 
 import Message from "./message"
 import { ScrollView } from "react-native-gesture-handler"
+import PleaseLogin from "./pleaseLogin"
+
 
 class Messages extends Component {
   constructor(props) {
@@ -45,7 +47,7 @@ class Messages extends Component {
   render() {
     const { messagers } = this.state
     return (
-      <SafeAreaView>
+      <ScrollView>
         {
         this.props.user.SignedIn ?
         <ScrollView>
@@ -62,13 +64,9 @@ class Messages extends Component {
             </View>
         </ScrollView> 
         :
-        <View>
-          <Text>
-              Please login
-            </Text>
-        </View>      
+        <PleaseLogin />
       }
-      </SafeAreaView>
+      </ScrollView>
     )
   }
 }
