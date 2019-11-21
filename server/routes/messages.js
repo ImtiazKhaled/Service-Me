@@ -5,14 +5,17 @@ const connection = config.connection
 // get all other users messaged by user
 router.get("/:id", (req, res) => {
     var id = req.params.id
-    const GET_MESSAGES_BETWEEN = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee="${id} OR Messager="${id}"`
-    console.log(GET_MESSAGES_BETWEEN)
+    const res = []
+    const GET_MESSAGES_BETWEEN_ONE = `SELECT * FROM MESSAGESBETWEEN JOIN SMUSER ON Messager!=UserId WHERE UserId="${id}" AND UserId=Messagee`
+    const GET_MESSAGES_BETWEEN_TWO = `SELCET * FROM MESSAGESBETWEEN JOIN SMUSER ON Messagee!=UserId WHERE UserId="${id}" AND UserId=Messager`
+    console.log(GET_MESSAGES_BETWEEN_ONE)
+    console.log(GET_MESSAGES_BETWEEN_TWO)
     connection.query(GET_MESSAGES_BETWEEN, (err, data) => {
         if(data) {
             if(data.length>0)
-                res.send(data)
+                res = data
             else
-                res.send("That user does not have any messages")
+                res.send({res:"empty"})
         } else {
             console.log(err)
         }
@@ -30,7 +33,7 @@ router.get("/:SenderId/:ReceiverId", (req, res) => {
             if(data.length)
                 res.send(data)
             else
-                res.send("There are not messages between the two users")
+                res.send({res:"empty"})
         } else {
             console.log(err)
         }
@@ -62,14 +65,8 @@ router.get("/add/:SenderId/:ReceiverId", (req, res) => {
     // const MAKE_CHAT_TWO = `INSERT INTO MESSAGESBETWEEN VALUES("${ReceiverId}","${SenderId}")`
     connection.query(MAKE_CHAT_ONE, (err, data) => {
         if(data) {
-            console.log(MAKE_CHAT_ONE)
-        } else {
-            console.log(err)
-        }
-    })
-    connection.query(MAKE_CHAT_TWO, (err, data) => {
-        if(data) {
-            console.log(MAKE_CHAT_TWO)
+	    console.log(MAKE_CHAT_ONE)
+            res.send("success")
         } else {
             console.log(err)
         }
