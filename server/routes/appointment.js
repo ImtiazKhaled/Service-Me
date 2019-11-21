@@ -7,9 +7,9 @@ const connection = config.connection
 // get all the orders the requested by the customer
 router.get("/customer/:email", (req, res) => {
     var email = req.params.email
-    const GET_ALL_ORDERS = `SELECT * FROM GENERATEDORDER WHERE CustomerEmail="${email}"`
-    console.log(GET_ALL_ORDERS)
-    connection.query(GET_ALL_ORDERS, (err, data) => {
+    const GET_ALL_ORDERS_CUSTOMER = `SELECT * FROM GENERATEDORDER WHERE CustomerEmail="${email}"`
+    console.log(GET_ALL_ORDERS_CUSTOMER)
+    connection.query(GET_ALL_ORDERS_CUSTOMER, (err, data) => {
         if(data) {
             if(data.length>0) {
                 res.send(data)
@@ -25,9 +25,9 @@ router.get("/customer/:email", (req, res) => {
 // get all orders requested to the vendor
 router.get("/vendor/:id", (req, res) => {
     var id = req.params.id
-    const GET_ALL_ORDERS = `SELECT * FROM GENERATEDORDER WHERE VendorId="${id}"`
-    console.log(GET_ALL_ORDERS)
-    connection.query(GET_ALL_ORDERS, (err, data) => {
+    const GET_ALL_ORDERS_VENDOR = `SELECT * FROM GENERATEDORDER WHERE VendorId="${id}"`
+    console.log(GET_ALL_ORDERS_VENDOR)
+    connection.query(GET_ALL_ORDERS_VENDOR, (err, data) => {
         if(data) {
             if(data.length>0) {
                 res.send(data)
@@ -38,7 +38,6 @@ router.get("/vendor/:id", (req, res) => {
             console.log(err)
         }
     })
-    res.send({status: "success"})
 })
 
 

@@ -31,7 +31,7 @@ class Profile extends Component {
           }
       })
       .catch(err => alert(err))
-    } else {
+    } else if(this.props.user.type === "Vendor"){
       fetch(url+"appointment/vendor/"+this.props.user.UserId)
       .then(response => response.json())
       .then(data => {
@@ -42,8 +42,11 @@ class Profile extends Component {
                   orders: data,
               })
           }
+          console.log(data)
       })
       .catch(err => alert(err))  
+    } else {
+      return
     }
   }
 
