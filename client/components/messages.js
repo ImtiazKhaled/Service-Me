@@ -16,12 +16,10 @@ class Messages extends Component {
   }
   
   componentDidUpdate = () => {
-    if(this.props.user.SignedIn) {   
-      console.log(url+"messages/"+this.props.user.UserId) 
+    if(this.props.user.SignedIn) {
       fetch(url+"messages/"+this.props.user.UserId)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         if(data.res && data.res === "empty") {
           return
         } else{

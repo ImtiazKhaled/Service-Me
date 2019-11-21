@@ -12,19 +12,9 @@ import DateTimePicker from "react-native-modal-datetime-picker"
 class AppointmentForm extends React.Component {
     constructor(props) {
         super(props)
-        var vendor
-        
-        let VendorId = JSON.stringify(this.props.navigation.getParam("VendorId"))
-        VendorId = VendorId.substring(1, VendorId.length - 1)
-        fetch(url+"vendor/id/"+VendorId)
-        .then(response => response.json())
-        .then(data => {
-            vendor = data
-        })
-        .catch(err => alert(err))
 
         this.state = {
-          vendor: vendor,
+          vendor: {},
           user: props.user, 
           customerFName: "", 
           customerLName: "", 
@@ -36,7 +26,21 @@ class AppointmentForm extends React.Component {
           dateTimePickerVisible: false
         }
     }
-    
+
+    componentDidMount = () => {
+        let VendorId = JSON.stringify(this.props.navigation.getParam("VendorId"))
+        VendorId = VendorId.substring(1, VendorId.length - 1)
+        var dataGot={}
+        fetch(url+"vendor/id/"+VendorId)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                vendor: {...data}
+            })   
+        })
+        .catch(err => alert(err))
+    }
+
     onSubmit = () => {
         const order = this.state.user.SignedIn ?
         {
@@ -60,6 +64,19 @@ class AppointmentForm extends React.Component {
         }
 
         console.log(order)
+        fetch(url+'appointment', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order)
+        }).then(response => {
+            
+        })
+        .catch(error => {
+            console.log(error)
+        })
 
     }
 
