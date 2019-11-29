@@ -84,9 +84,9 @@ class Profile extends Component {
             <Button title="LogOut" onPress={()=>{this.props.logout()}} />
             <Text> Past Orders </Text>
             {
-              this.state.orders && this.state.orders.map( order =>
-                  <ShowOrder order={order}/>  
-            )}
+              this.state.orders && this.state.orders.map( order =>{
+                <ShowOrder order={order}/>  
+            })}
           </View> :
           <PleaseLogin />
         }

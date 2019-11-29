@@ -55,10 +55,10 @@ class Messages extends Component {
               {
                 messagers.map(
                   (message) => {
-                    return <Message 
-                    key={message.UserId} 
-                    message={message} 
-                    openMessage={this.openMessage}/>
+                    if(message.Messagee != message.Messager) return <Message 
+                      key={message.UserId} 
+                      message={message} 
+                      openMessage={this.openMessage}/>
                 })
               }
             </View>
