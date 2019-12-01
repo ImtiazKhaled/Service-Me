@@ -67,6 +67,7 @@ class AppointmentForm extends React.Component {
             ServicerName: this.state.vendor.FName + " " + this.state.vendor.LName
         }
 
+        console.log(order)
         fetch(url+'appointment', {
         method: 'POST',
         headers: {
@@ -95,6 +96,7 @@ class AppointmentForm extends React.Component {
         this.setState({
             serviceDate
         })
+        console.log("A date has been picked: ", serviceDate)
         this.hideDateTimePicker()
     }
 

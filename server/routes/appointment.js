@@ -40,6 +40,8 @@ router.get("/vendor/:id", (req, res) => {
     })
 })
 
+
+
 // add a new order
 router.post("/", (req, res) => {
     var OrderId =  req.body.CustomerFName[0] + req.body.CustomerLName[0] + req.body.VendorId + req.body.ServiceDate
@@ -47,28 +49,11 @@ router.post("/", (req, res) => {
     connection.query(ADD_ORDER, (err, data) => {
         if(data) {
             console.log(ADD_ORDER)
-            res.send({status: "success"})
         } else {
             console.log(err)
-            res.send({status: "fail"})
         } 
     })
-})
-
-// change order status
-router.patch("/", (req, res) => {
-    OrderId = req.body.OrderId
-    OrderStatus = req.body.OrderStatus
-    const UPDATE_ORDER_STATUS = `UPDATE GENERATEDORDER SET OrderStatus=${OrderStatus} WHERE OrderId=${OrderId}`
-    connection.query(UPDATE_ORDER_STATUS, (err, data) => {
-        if(data) {
-            console.log(UPDATE_ORDER_STATUS)
-            res.send({status: "success"})
-        } else {
-            console.log(err)
-            res.send({status: "fail"})
-        } 
-    })
+    res.send("success")
 })
 
 module.exports = router
