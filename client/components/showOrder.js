@@ -1,13 +1,15 @@
 import React from "react"
 import { View, Text } from "react-native"
 import { Card, Button } from "react-native-elements"
+import { Col, Grid } from "react-native-easy-grid"
 import { useDispatch, useSelector } from "react-redux"
+import { styles } from "../styles/styles"
 
 const ShowOrder = (props) => {
     const dispatch = useDispatch()
     const user = useSelector(state=>state.user)
     const { order } = props
-    return <Card>
+    return <Card containerStyle={styles.orderCard}>
         <Text>
             Order Type: {order.ServiceType}
         </Text>

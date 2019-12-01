@@ -81,7 +81,6 @@ const RootReducer = (state = initState, action) => {
                 user: logOut
             }
         case 'ORDER_EDIT':
-        console.log(action)
         fetch(url+'appointment', {
             method: 'PATCH',
             headers: {

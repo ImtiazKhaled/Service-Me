@@ -53,5 +53,8 @@ export const styles = StyleSheet.create({
   },
   messageBox: {
     height: SH*0.08
+  },
+  orderCard: {
+    width: SW*0.9
   }
 })
