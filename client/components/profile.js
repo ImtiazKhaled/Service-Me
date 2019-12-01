@@ -5,7 +5,6 @@ import { connect } from "react-redux"
 import { styles } from "../styles/styles"
 import ShowOrder from "./showOrder"
 import { url } from "../secrets"
-import { Col, Grid } from "react-native-easy-grid"
 import PleaseLogin from "./pleaseLogin"
 
 class Profile extends Component {
@@ -49,6 +48,7 @@ class Profile extends Component {
     }
   }
 
+  
   render() {
     const { user } = this.props
     return (
@@ -84,8 +84,8 @@ class Profile extends Component {
             <Button title="LogOut" onPress={()=>{this.props.logout()}} />
             <Text> Past Orders </Text>
             {
-              this.state.orders && this.state.orders.map( order =>{
-                <ShowOrder order={order}/>  
+              this.state.orders.map( order =>{
+                if(order.OrderStatus != 'N/A') return <ShowOrder order={order}/>  
             })}
           </View> :
           <PleaseLogin />
