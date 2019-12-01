@@ -1,3 +1,5 @@
+import { url } from '../secrets'
+
 var initState = {
     categories: [
         {
@@ -78,6 +80,20 @@ const RootReducer = (state = initState, action) => {
                 ...state,
                 user: logOut
             }
+        case 'ORDER_EDIT':
+        console.log(action)
+        fetch(url+'appointment', {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(action)
+        }).then(response => {})
+        .catch(error => {
+            console.log(error)
+        })
+        return state
         default:
             return state
     }
