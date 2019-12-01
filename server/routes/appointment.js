@@ -56,4 +56,20 @@ router.post("/", (req, res) => {
     res.send("success")
 })
 
+router.patch("/", (req, res) => {
+    OrderId = req.body.OrderId
+    OrderStatus = req.body.OrderStatus
+    const UPDATE_ORDER_STATUS = `UPDATE GENERATEDORDER SET OrderStatus=${OrderStatus} WHERE OrderId=${OrderId}`
+    connection.query(UPDATE_ORDER_STATUS, (err, data) => {
+        if(data) {
+            console.log(UPDATE_ORDER_STATUS)
+            res.send({status: "success"})
+        } else {
+            console.log(err)
+            res.send({status: "fail"})
+        } 
+    })
+    res.send("success")
+})
+
 module.exports = router
